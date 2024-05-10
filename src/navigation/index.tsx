@@ -10,10 +10,15 @@ import Menu from '../screens/Menu';
 import Rewards from '../screens/Rewards';
 import Settings from '../screens/Settings';
 import UserInfor from '../screens/UserInfor';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import DrawerNavigator from './drawer';
 
 const Stack = createNativeStackNavigator();
-const Drawer = createDrawerNavigator();
+
+function Home(){
+    return (
+        <DrawerNavigator/>
+    );
+}
 
 export default function AppNavigation(){
     const user= useSelector((state) => state?.user);
@@ -75,8 +80,14 @@ export default function AppNavigation(){
                     }}
                 />
                     </>
+                // <Stack.Screen
+                //     name='Home'
+                //     component={Home}
+                //     options={{headerShown: false}}
+                // />
                 )}
             </Stack.Navigator>
+            {/* <DrawerNavigator/> */}
         </NavigationContainer>
     )
 }
