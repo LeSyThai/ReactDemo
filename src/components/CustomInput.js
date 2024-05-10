@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, TextInput, StyleSheet, Dimensions } from "react-native";
+import { View, Text, TextInput, StyleSheet, Dimensions, Keyboard, } from "react-native";
 import { Controller } from "react-hook-form";
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 
@@ -34,7 +34,7 @@ const CustomInput = ({
                         value={value}
                         onChangeText={onChange}
                         onBlur={onBlur}
-                        style={{paddingLeft:10, color: 'white'}}
+                        style={{paddingLeft:10, color: 'white', flex: 1}}
                         secureTextEntry ={secureTextEntry}
                         // onChangeText={(val)=> setEmail(val)}
                         />

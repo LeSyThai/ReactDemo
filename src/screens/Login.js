@@ -3,9 +3,10 @@ import {
     Text, 
     StyleSheet, 
     Dimensions,
-    TextInput, 
+    Keyboard,
     TouchableOpacity, 
-    Image
+    Image,
+    TouchableWithoutFeedback
 } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient';
 import Fontisto from 'react-native-vector-icons/Fontisto'
@@ -119,100 +120,102 @@ function Login(){
 
 
     return (
-        <View style={styles.container}>
-            <LinearGradient
-                colors={['#433f51','#364456','#463b4d']}
-                style={styles.background}
-                start={{ x: 0, y: 0.5 }}
-                end={{ x: 1, y: 0.5 }}
-            >
-            
-            <View style={styles.header}>
-                <Image style={styles.header_image} source={require('../assets/images/upnow.png')}/>
-                <View>
-                    <Text style={{color: 'white', fontWeight: 'bold', fontSize: 25}}>UpNow</Text>
-                    <Text style={{color: '#3f7ad9'}}>Digital Hypnoterapy</Text>
-                </View>
-            </View>
-            
-            <View style={styles.body}>
-                <Text style={{color: 'white', fontWeight: 'bold', fontSize: 25, paddingBottom: 15}}>Log In</Text>
-                <CustomInput 
-                    name='email'
-                    icon_name='email'
-                    placeholder= 'Email'
-                    control={control}
-                    // value={email}
-                    rules={{
-                        required: 'Email is required', 
-                        pattern: {
-                            value: emailRegex, 
-                            message: 'Incorrect email address'
-                        }
-                    }}
-                    //onChange={(val) => setEmail(val)}
-                />
-
-                <CustomInput
-                    name='password'
-                    icon_name='lock'
-                    placeholder='Password'
-                    secureTextEntry
-                    control={control}
-                    //value={password}
-                    rules={{
-                        required: 'Password is required', 
-                        minLength: {
-                            value: 6, 
-                            message: 'Password should be minimum 6 characters long'
-                        },
-                        maxLength: {
-                            value: 24,
-                            message: 'Password should be maximum 24 character long'
-                        }
-                    }}
-                    //onChange={(val) => setPassword(val)}
-                />
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+            <View style={styles.container}>
+                <LinearGradient
+                    colors={['#433f51','#364456','#463b4d']}
+                    style={styles.background}
+                    start={{ x: 0, y: 0.5 }}
+                    end={{ x: 1, y: 0.5 }}
+                    >
                 
-                <View style={{alignItems: 'flex-end'}}>
-                    <TouchableOpacity>
-                        <Text style={{right: 0, color: 'white'}}>Forget password ?</Text>
-                    </TouchableOpacity>
+                <View style={styles.header}>
+                    <Image style={styles.header_image} source={require('../assets/images/upnow.png')}/>
+                    <View>
+                        <Text style={{color: 'white', fontWeight: 'bold', fontSize: 25}}>UpNow</Text>
+                        <Text style={{color: '#3f7ad9'}}>Digital Hypnoterapy</Text>
+                    </View>
                 </View>
-                <TouchableOpacity             
-                    onPress={handleSubmit(onSignInPressed)}
-                    >
-                    <LinearGradient
-                        colors={['#ff608b','#fe7591','#ff9199']}
-                        style={styles.button}
-                    >
-                    <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>Log In</Text>
-                    </LinearGradient>
-                </TouchableOpacity>
-                <View style={{alignItems: 'center', flexDirection: 'row', justifyContent: 'space-evenly', paddingHorizontal: 50}}>
-                    <Text style={{color: 'white'}}>Don't have an account?</Text>
-                    <TouchableOpacity
-                         onPress={() => navigation.navigate('Signup')}
+                
+                <View style={styles.body}>
+                    <Text style={{color: 'white', fontWeight: 'bold', fontSize: 25, paddingBottom: 15}}>Log In</Text>
+                    <CustomInput 
+                        name='email'
+                        icon_name='email'
+                        placeholder= 'Email'
+                        control={control}
+                        // value={email}
+                        rules={{
+                            required: 'Email is required', 
+                            pattern: {
+                                value: emailRegex, 
+                                message: 'Incorrect email address'
+                            }
+                        }}
+                        //onChange={(val) => setEmail(val)}
+                        />
+
+                    <CustomInput
+                        name='password'
+                        icon_name='lock'
+                        placeholder='Password'
+                        secureTextEntry
+                        control={control}
+                        //value={password}
+                        rules={{
+                            required: 'Password is required', 
+                            minLength: {
+                                value: 6, 
+                                message: 'Password should be minimum 6 characters long'
+                            },
+                            maxLength: {
+                                value: 24,
+                                message: 'Password should be maximum 24 character long'
+                            }
+                        }}
+                        //onChange={(val) => setPassword(val)}
+                        />
+                    
+                    <View style={{alignItems: 'flex-end'}}>
+                        <TouchableOpacity>
+                            <Text style={{right: 0, color: 'white'}}>Forget password ?</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <TouchableOpacity             
+                        onPress={handleSubmit(onSignInPressed)}
                         >
-                        <Text style={{color: '#ff4f9e', fontWeight: 'bold'}}>Sign Up</Text>
+                        <LinearGradient
+                            colors={['#ff608b','#fe7591','#ff9199']}
+                            style={styles.button}
+                            >
+                        <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>Log In</Text>
+                        </LinearGradient>
+                    </TouchableOpacity>
+                    <View style={{alignItems: 'center', flexDirection: 'row', justifyContent: 'space-evenly', paddingHorizontal: 50}}>
+                        <Text style={{color: 'white'}}>Don't have an account?</Text>
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate('Signup')}
+                            >
+                            <Text style={{color: '#ff4f9e', fontWeight: 'bold'}}>Sign Up</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={{alignItems: 'center', flexDirection: 'row', justifyContent: 'space-evenly', paddingVertical: screen.height*0.05}}>
+                        <View style={styles.separator}/>
+                        <Text style={{color: 'white'}}>Or Log in with</Text>
+                        <View style={styles.separator}/>
+                    </View>
+                    <TouchableOpacity style={styles.fbButton}>
+                        <MaterialIcons name="facebook" size={30} color="white" style={{marginRight: 30}}/>
+                        <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>Log in with Facebook</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.apButton}>
+                        <MaterialIcons name="apple" size={24} color="white" style={{marginRight: 50}} />
+                        <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18, }}>Log in with Apple</Text>
                     </TouchableOpacity>
                 </View>
-                <View style={{alignItems: 'center', flexDirection: 'row', justifyContent: 'space-evenly', paddingVertical: screen.height*0.05}}>
-                    <View style={styles.separator}/>
-                    <Text style={{color: 'white'}}>Or Log in with</Text>
-                    <View style={styles.separator}/>
-                </View>
-                <TouchableOpacity style={styles.fbButton}>
-                    <MaterialIcons name="facebook" size={30} color="white" style={{marginRight: 30}}/>
-                    <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>Log in with Facebook</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.apButton}>
-                    <MaterialIcons name="apple" size={24} color="white" style={{marginRight: 50}} />
-                    <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18, }}>Log in with Apple</Text>
-                </TouchableOpacity>
+                </LinearGradient>
             </View>
-            </LinearGradient>
-        </View>
+        </TouchableWithoutFeedback>
     )
 }
 
