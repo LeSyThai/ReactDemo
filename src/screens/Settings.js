@@ -14,6 +14,7 @@ import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {deleteAccountAction} from '../store/userAction';
+import AwesomeAlert from 'react-native-awesome-alerts';
 
 const screen = Dimensions.get('screen');
 
@@ -21,6 +22,7 @@ export default function Settings() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleDeleteAccount = async () => {
     await dispatch(deleteAccountAction(user.user?.[0]?.id));
@@ -58,11 +60,38 @@ export default function Settings() {
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.item, {marginTop: 30}]}
-            onPress={() => handleDeleteAccount()}>
+            onPress={() => setShowAlert(!showAlert)}>
             <Text style={{color: 'red'}}>Delete account</Text>
           </TouchableOpacity>
         </View>
       </View>
+      <AwesomeAlert 
+        show={showAlert}  
+        title='Delete Account' 
+        titleStyle={{fontSize: 28, color: 'red'}}
+
+        message='Are you want to delete this account ?'
+        messageStyle={{color: 'black', fontSize: 22}}
+
+        showCancelButton={true}
+        cancelText='Cancel'
+        cancelButtonColor='blue'
+        onCancelPressed={()=>{
+          setShowAlert(false)
+        }}
+
+        showConfirmButton={true}
+        confirmText='Delete'
+        confirmButtonColor="#DD6B55"
+        onConfirmPressed={() => {
+          handleDeleteAccount()
+        }}
+
+        // showProgress ={true}
+        // progressColor='red'
+        // progressSize={40}
+        />
+
     </View>
   );
 }
