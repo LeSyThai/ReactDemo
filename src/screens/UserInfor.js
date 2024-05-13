@@ -1,8 +1,11 @@
 import React, {useState} from "react";
-import {View, Text, StyleSheet,Image, TouchableOpacity, Dimensions, StatusBar, FlatList} from 'react-native'
+import {View, Text, StyleSheet,Image, TouchableOpacity, Dimensions, StatusBar, FlatList, PermissionsAndroid} from 'react-native'
 import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
+import { launchCamera } from "react-native-image-picker";
+import BottomSheet from 'reanimated-bottom-sheet';
+import Animated from "react-native-reanimated";
 
 const screen = Dimensions.get('screen');
 
@@ -11,9 +14,50 @@ export default function UserInfor(){
     const user= useSelector((state)=> state.user)
     const fName= user.user?.[0]?.fName ?? 'min';
     const lName= user.user?.[0]?.lName ?? 'Ad'
+    const [image, setImage] = useState('');
+
+    bs= React.createRef();
+    //fall= new Animated.Value(1);
+
+    const requestCameraPermission = async() =>{
+        try {
+            const checkPermission = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.CAMERA);
+
+            if(checkPermission === PermissionsAndroid.RESULTS.GRANTED){
+                // console.log('camera ready')
+                const result= await launchCamera({mediaType: 'photo', cameraType: "front"});
+                setImage(result.assets[0].uri);
+            }else{
+                console.log('camera not allow')
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    const renderInner = () =>{
+       <Text>Hello</Text>
+    }
+
+    const renderHeader = () =>{
+        <View style={styles.header}>
+            <View style={styles.panelHeader} >
+                <View style={styles.panelHandle}></View>
+            </View>
+        </View>
+    }
 
     return (
         <View style={styles.container}>
+            {/* <BottomSheet
+                ref= {this.bs}
+                snapPoints={[330,0]}
+                renderContent={this.renderInner}
+                renderHeader={this.renderHeader}
+                initialSnap={1}
+                callbackNode={this.fall}
+                enabledGestureInteraction={true}
+            /> */}
             <LinearGradient 
                 style={styles.background}
                 colors={['#833ab4','#fd1d1d','#fcb045']}
@@ -22,10 +66,13 @@ export default function UserInfor(){
             <StatusBar style='light'/>
             <View style={styles.body}>
                 <View style={styles.title}>
-                    <Image style={styles.profile_image} source={require('../assets/images/Valar,VaalmonicanHallowHymn.png')}/>
-                    <Text style={{fontSize: 15, color: 'red', paddingVertical: 10}}>
-                        Change profile photo
-                    </Text>
+                    {image!= '' ? 
+                    <Image style={styles.profile_image} source={ {uri: image}}/>
+                    : <Image style={styles.profile_image} source={require('../assets/images/Valar,VaalmonicanHallowHymn.png')}/> 
+                    }
+                    <TouchableOpacity style={{paddingVertical: 10}} onPress={() => requestCameraPermission()}>
+                        <Text style={{fontSize: 15, color: 'red'}}>Change profile photo</Text>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.menuList}>
                     <View style={styles.item}>
@@ -94,5 +141,24 @@ const styles= StyleSheet.create({
         backgroundColor: '#2a3a70',
         marginVertical: 5,
     },
-    
+    header:{
+        backgroundColor: "#FFFFFF",
+        shadowColor: '#333333',
+        shadowOffset: {width: -1, height: -3},
+        shadowRadius: 2,
+        shadowOpacity: 0.4,
+        paddingTop: 20,
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+    },
+    panelHeader:{
+        alignItems: 'center'
+    },
+    panelHandle:{
+        width: 40,
+        height: 8,
+        borderRadius: 4,
+        backgroundColor: '#00000040',
+        marginBottom: 10,
+    }
 });
