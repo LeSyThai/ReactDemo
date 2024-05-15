@@ -11,7 +11,7 @@ const CustomInput = ({
     icon_name,
     rules ={}, 
     placeholder, 
-    secureTextEntry
+    secureTextEntry,
 }) =>{
     return (
         <Controller

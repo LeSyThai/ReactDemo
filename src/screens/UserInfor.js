@@ -4,8 +4,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
 import { launchCamera } from "react-native-image-picker";
-import BottomSheet from 'reanimated-bottom-sheet';
-import Animated from "react-native-reanimated";
+// import BottomSheet from 'reanimated-bottom-sheet';
+// import Animated from "react-native-reanimated";
 
 const screen = Dimensions.get('screen');
 
@@ -16,36 +16,36 @@ export default function UserInfor(){
     const lName= user.user?.[0]?.lName ?? 'Ad'
     const [image, setImage] = useState('');
 
-    bs= React.createRef();
+    // bs= React.createRef();
     //fall= new Animated.Value(1);
 
-    const requestCameraPermission = async() =>{
-        try {
-            const checkPermission = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.CAMERA);
+    // const requestCameraPermission = async() =>{
+    //     try {
+    //         const checkPermission = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.CAMERA);
 
-            if(checkPermission === PermissionsAndroid.RESULTS.GRANTED){
-                // console.log('camera ready')
-                const result= await launchCamera({mediaType: 'photo', cameraType: "front"});
-                setImage(result.assets[0].uri);
-            }else{
-                console.log('camera not allow')
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    //         if(checkPermission === PermissionsAndroid.RESULTS.GRANTED){
+    //             // console.log('camera ready')
+    //             const result= await launchCamera({mediaType: 'photo', cameraType: "front"});
+    //             setImage(result.assets[0].uri);
+    //         }else{
+    //             console.log('camera not allow')
+    //         }
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // }
 
-    const renderInner = () =>{
-       <Text>Hello</Text>
-    }
+    // const renderInner = () =>{
+    //    <Text>Hello</Text>
+    // }
 
-    const renderHeader = () =>{
-        <View style={styles.header}>
-            <View style={styles.panelHeader} >
-                <View style={styles.panelHandle}></View>
-            </View>
-        </View>
-    }
+    // const renderHeader = () =>{
+    //     <View style={styles.header}>
+    //         <View style={styles.panelHeader} >
+    //             <View style={styles.panelHandle}></View>
+    //         </View>
+    //     </View>
+    // }
 
     return (
         <View style={styles.container}>
@@ -66,10 +66,11 @@ export default function UserInfor(){
             <StatusBar style='light'/>
             <View style={styles.body}>
                 <View style={styles.title}>
-                    {image!= '' ? 
-                    <Image style={styles.profile_image} source={ {uri: image}}/>
+                    {/* {image!= '' ?  */}
+                    {/* <Image style={styles.profile_image} source={ {uri: image}}/>
                     : <Image style={styles.profile_image} source={require('../assets/images/Valar,VaalmonicanHallowHymn.png')}/> 
-                    }
+                    } */}
+                    <Image style={styles.profile_image} source={require('../assets/images/Valar,VaalmonicanHallowHymn.png')}/> 
                     <TouchableOpacity style={{paddingVertical: 10}} onPress={() => requestCameraPermission()}>
                         <Text style={{fontSize: 15, color: 'red'}}>Change profile photo</Text>
                     </TouchableOpacity>
