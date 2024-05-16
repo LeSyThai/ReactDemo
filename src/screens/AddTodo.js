@@ -24,7 +24,8 @@ export default function AddTodo(){
     const todos= useSelector((state) => state.todo)
     
     const onAddTodoPressed = async(data) =>{
-        await dispatch(addTodoAction(user.user[0].id, data.title, data.description))
+        await dispatch(addTodoAction(user.user[0].id, data.title, data.description));
+        
     }
 
     return (

@@ -40,9 +40,6 @@ export default function Welcome(){
     //console.log(todos);
 
     const pressHandler = (id) =>{
-        // const todo= useCallback(() =>{
-        //     dispatch(getTodoByIdAction(id));
-        // })
         navigation.navigate('UpdateTodo', {id})
     }
 
@@ -58,13 +55,14 @@ export default function Welcome(){
         const fName= user.user?.[0]?.fName ?? 'min';
         const lName= user.user?.[0]?.lName ?? 'Ad'
         const userName= lName + ' ' + fName;
-
+ 
     return (
+        <>
         <View style={styles.container}>
             <LinearGradient 
                 style={styles.background}
                 colors={['#833ab4','#fd1d1d','#fcb045']}
-                >{onload}
+                >
             </LinearGradient>
             <StatusBar style='light'/>
             <View style={styles.header}>
@@ -86,6 +84,7 @@ export default function Welcome(){
                 <FlatList
                     style={styles.flatList}
                     data={listTodo}
+                    // refreshing= {onload}
                     renderItem={({item}) => (
                         <TodoItem item={item} pressHandler ={pressHandler} pressBtnHandler={() => {
                             setShowAlert(true),
@@ -93,7 +92,8 @@ export default function Welcome(){
                         }}
                         />
                     )}
-                />
+                    keyExtractor={(item, index) => String(index)}
+                    />
             </View>
             <View style={styles.addBtn}>
                 <TouchableOpacity onPress={() => navigation.navigate('AddTodo')}>
@@ -105,31 +105,32 @@ export default function Welcome(){
                 show={showAlert}  
                 title='Delete Todo' 
                 titleStyle={{fontSize: 28, color: 'red'}}
-
+                
                 message='Are you want to delete this todo ?'
                 messageStyle={{color: 'black', fontSize: 22}}
-
+                
                 showCancelButton={true}
                 cancelText='Cancel'
                 cancelButtonColor='blue'
                 onCancelPressed={()=>{
-                setShowAlert(false),
-                setDeletingTodoId(null)
+                    setShowAlert(false),
+                    setDeletingTodoId(null)
                 }}
-
+                
                 showConfirmButton={true}
                 confirmText='Delete'
                 confirmButtonColor="#DD6B55"
                 onConfirmPressed={() => {
-                handleConfirmDelete(deletingTodoId)
+                    handleConfirmDelete(deletingTodoId)
                 }}
-
+                
                 // showProgress ={true}
                 // progressColor='red'
                 // progressSize={40}
-            />
+                />
 
         </View>
+        </>
     );
 }
 
