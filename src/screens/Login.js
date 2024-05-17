@@ -80,24 +80,20 @@ const styles= StyleSheet.create({
         height: screen.height*0.001,
         marginHorizontal: 10
     },
-    fbButton:{
+    otherLoginBtn:{
         flexDirection: 'row',
         alignItems:'center',
         borderRadius: 50,
         height: screen.height*0.06,
-        marginVertical: 15,
+        marginVertical: 5,
         paddingVertical: 10,
         paddingHorizontal: 20,
-        backgroundColor: '#3B5998',
     },
-    apButton:{
-        flexDirection: 'row',
-        alignItems:'center',
-        borderRadius: 50,
-        height: screen.height*0.06,
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        backgroundColor: '#000000',
+    btnText:{
+        color: 'white', 
+        fontWeight: 'bold', 
+        fontSize: 18, 
+        position: 'absolute', 
     }
 });
 
@@ -257,13 +253,13 @@ function Login(){
                         <Text style={{color: 'white'}}>Or Log in with</Text>
                         <View style={styles.separator}/>
                     </View>
-                    <TouchableOpacity style={styles.fbButton}>
+                    <TouchableOpacity style={[styles.otherLoginBtn, {backgroundColor: '#3B5998'}]}>
                         <MaterialIcons name="facebook" size={30} color="white" style={{marginRight: 30}}/>
-                        <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>Log in with Facebook</Text>
+                        <Text style={[styles.btnText, {left: screen.width*0.2, right: screen.width*0.2}]}>Log in with Facebook</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.apButton}>
+                    <TouchableOpacity style={[styles.otherLoginBtn, {backgroundColor: '#000000'}]}>
                         <MaterialIcons name="apple" size={24} color="white" style={{marginRight: 50}} />
-                        <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18, }}>Log in with Apple</Text>
+                        <Text style={[styles.btnText, {left: screen.width*0.24, right: screen.width*0.24}]}>Log in with Apple</Text>
                     </TouchableOpacity>
                 </View>
                 </LinearGradient>
