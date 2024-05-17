@@ -9,7 +9,6 @@ import {
     TouchableWithoutFeedback
 } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient';
-import Fontisto from 'react-native-vector-icons/Fontisto'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import { useForm, Controller, useFormState} from 'react-hook-form';
 import CustomInput from '../components/CustomInput';
@@ -17,6 +16,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { loginAction } from '../store/userAction';
+import notifee, { AndroidImportance, AndroidVisibility, TimestampTrigger, TriggerType } from '@notifee/react-native';
 
 const screen = Dimensions.get('screen');
 const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -115,9 +115,61 @@ function Login(){
 
     const onSignInPressed = async data =>{
         await dispatch(loginAction(data.email, data.password));
+        onDisplayNotification();
         //console.log(data.email)
     }
 
+    async function onDisplayNotification(){
+        await notifee.requestPermission()
+
+        const channelId= await notifee.createChannel({
+            id: 'default',
+            name: 'Default Channel',
+            sound: 'hollow',
+            importance: AndroidImportance.HIGH,
+            visibility: AndroidVisibility.PUBLIC,
+        });
+
+        await notifee.displayNotification({
+            // title: '<p style="color: #4caf50;"><b>Styled HTMLTitle</span></p></b></p> &#128576;',
+            // subtitle: '&#129395;',
+            // body: 
+            //     'The <p style="text-decoration: line-through">body can</p> also be <p style="color: #ffffff; background-color: #9c27b0"><i>styled too</i></p> &#127881;!',
+            // android: {
+            //     channelId,
+            //     //smallIcon: 'name-of-a-small-icon',
+            //     color: '#4caf50',
+            //     actions: [
+            //     {
+            //         title: '<b>Dance</b> &#128111;',
+            //         pressAction: { id: 'dance' },
+            //     },
+            //     {
+            //         title: '<p style="color: #f44336;"><b>Cry</b> &#128557;</p>',
+            //         pressAction: { id: 'cry' },
+            //     },
+            //     ],
+            // },
+
+            title: 'Log in successfully',
+            body: 'A new message has been received from a user.',
+            android: {
+                channelId,
+                importance: AndroidImportance.HIGH,
+                // Remote image
+                largeIcon: 'https://my-cdn.com/users/123456.png',
+
+                // Local image
+                largeIcon: require('../assets/images/Valar,VaalmonicanHallowHymn.png'),
+
+                // Absolute file path
+                //largeIcon: file:///xxxx/xxxx/xxxx.jpg,
+
+                // Android resource (mipmap or drawable)
+                //largeIcon: 'large_icon',
+            },
+        });
+    }
 
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -183,6 +235,7 @@ function Login(){
                     </View>
                     <TouchableOpacity             
                         onPress={handleSubmit(onSignInPressed)}
+                        //onPress={handleSubmit(onDisplayNotification)}
                         >
                         <LinearGradient
                             colors={['#ff608b','#fe7591','#ff9199']}
