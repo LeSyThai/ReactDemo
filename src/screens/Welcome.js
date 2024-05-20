@@ -1,11 +1,14 @@
-import React from "react";
-import { View, Image, Text, StyleSheet, StatusBar, TextInput, TouchableOpacity, Button, SafeAreaView} from "react-native";
+import React,{ useCallback, useEffect, useMemo, useState }  from "react";
+import { View, Image, Text, StyleSheet, FlatList, TouchableOpacity, Button, SafeAreaView} from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
 import {Dimensions} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {useIsFocused, useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutAction } from "../store/userAction";
+import TodoItem from "../components/TodoItem";
+import { deleteTodoAction, getTodoByIdAction, getTodosAction } from "../store/todoAction";
+import AwesomeAlert from "react-native-awesome-alerts";
 import DrawerSceneWrapper from "../components/DrawerSceneWrappers";
 
 const screen = Dimensions.get('screen');
@@ -13,9 +16,37 @@ const screen = Dimensions.get('screen');
 const Welcome = ({navigation}) => {
     const {openDrawer}= navigation;
     const dispatch= useDispatch();
+    const [showAlert, setShowAlert] = useState(false);
+    const [deletingTodoId, setDeletingTodoId] = useState(null);
+    const isFocused = useIsFocused();
 
     const user= useSelector((state) => state.user)
+    const todos= useSelector((state) => state.todo)
     
+    const onload = async()=>{
+        await dispatch(getTodosAction(user.user[0].id));
+    }
+
+    useEffect(()=>{
+        if(isFocused)
+        onload();
+    }, [dispatch, user.user, isFocused]);
+
+    const listTodo= useMemo(() => {
+        return todos.todos;
+    }, [todos.todos])
+
+
+    const pressHandler = (id) =>{
+        navigation.navigate('UpdateTodo', {id})
+    }
+
+    const handleConfirmDelete = async() => {
+        await dispatch(deleteTodoAction(deletingTodoId));
+        setShowAlert(false);
+      };
+
+
     const handleLogout = () => {
         dispatch(logoutAction());
         //navigation.navigate('Login'); 
@@ -45,6 +76,58 @@ const Welcome = ({navigation}) => {
                         <Button title="Logout" onPress={handleLogout} />
                     </View>
                 </View>
+                <View style={{alignItems: 'center'}}>
+                <Text style={{fontSize: 30, color: 'white'}}>To do List</Text>
+            </View>
+            <View style={styles.list}>
+                <FlatList
+                    style={styles.flatList}
+                    data={listTodo}
+                    // refreshing= {onload}
+                    renderItem={({item}) => (
+                        <TodoItem item={item} pressHandler ={pressHandler} pressBtnHandler={() => {
+                            setShowAlert(true),
+                            setDeletingTodoId(item.id)
+                        }}
+                        />
+                    )}
+                    keyExtractor={(item, index) => String(index)}
+                    />
+            </View>
+            <View style={styles.addBtn}>
+                <TouchableOpacity onPress={() => navigation.navigate('AddTodo')}>
+                    <AntDesign name='pluscircle' size={50} color='white'/>
+                </TouchableOpacity>
+            </View>
+            
+            <AwesomeAlert
+                show={showAlert}  
+                title='Delete Todo' 
+                titleStyle={{fontSize: 28, color: 'red'}}
+                
+                message='Are you want to delete this todo ?'
+                messageStyle={{color: 'black', fontSize: 22}}
+                
+                showCancelButton={true}
+                cancelText='Cancel'
+                cancelButtonColor='blue'
+                onCancelPressed={()=>{
+                    setShowAlert(false),
+                    setDeletingTodoId(null)
+                }}
+                
+                showConfirmButton={true}
+                confirmText='Delete'
+                confirmButtonColor="#DD6B55"
+                onConfirmPressed={() => {
+                    handleConfirmDelete(deletingTodoId)
+                }}
+                
+                // showProgress ={true}
+                // progressColor='red'
+                // progressSize={40}
+                />
+
             </SafeAreaView>
         </DrawerSceneWrapper>
     );
@@ -87,6 +170,16 @@ const styles= StyleSheet.create({
         color: '#666',
         marginLeft: 8,
     },
-    
+    list:{
+        marginTop: 20,
+      },
+      addBtn:{
+          position: 'absolute',
+          bottom: 15,
+          right: 15
+      },
+      flatList:{
+          height: screen.height * 0.7
+      }   
     
 });

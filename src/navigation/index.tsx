@@ -40,6 +40,14 @@ export default function AppNavigation(){
                         name='HomeScreen'
                         component={Home}
                     />
+                    {/* <Stack.Screen
+                        name='AddTodo'
+                        component={AddTodo}
+                    />
+                    <Stack.Screen
+                        name='HomeScreen'
+                        component={Home}
+                    /> */}
                     <Stack.Screen
                         name="UserInfor"
                         component={UserInfor}
