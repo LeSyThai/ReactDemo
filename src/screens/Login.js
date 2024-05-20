@@ -145,24 +145,25 @@ function Login(){
             //         pressAction: { id: 'cry' },
             //     },
             //     ],
+            //     importance: AndroidImportance.HIGH
             // },
 
             title: 'Log in successfully',
             body: 'A new message has been received from a user.',
             android: {
                 channelId,
-                importance: AndroidImportance.HIGH,
                 // Remote image
                 largeIcon: 'https://my-cdn.com/users/123456.png',
-
+                
                 // Local image
                 largeIcon: require('../assets/images/Valar,VaalmonicanHallowHymn.png'),
-
+                
                 // Absolute file path
                 //largeIcon: file:///xxxx/xxxx/xxxx.jpg,
-
+                
                 // Android resource (mipmap or drawable)
                 //largeIcon: 'large_icon',
+                importance: AndroidImportance.HIGH,
             },
         });
     }
@@ -231,7 +232,7 @@ function Login(){
                     </View>
                     <TouchableOpacity             
                         onPress={handleSubmit(onSignInPressed)}
-                        //onPress={handleSubmit(onDisplayNotification)}
+                        // onPress={handleSubmit(onDisplayNotification)}
                         >
                         <LinearGradient
                             colors={['#ff608b','#fe7591','#ff9199']}
