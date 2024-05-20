@@ -15,22 +15,19 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
 import * as Progress from 'react-native-progress';
-import DrawerSceneWrapper from '../components/DrawerSceneWrappers';
 
 const screen = Dimensions.get('screen');
 
-const Rewards=({navigation}) =>{
-  const {openDrawer}= navigation;
+export default function Rewards() {
+  const navigation = useNavigation();
   return (
-    <DrawerSceneWrapper>
-
     <View style={styles.container}>
       <LinearGradient
         style={styles.background}
         colors={['#833ab4', '#fd1d1d', '#fcb045']}></LinearGradient>
       <StatusBar style="light" />
       <View style={styles.header}>
-        <TouchableOpacity onPress={openDrawer}>
+        <TouchableOpacity onPress={() => navigation.navigate('Menu')}>
           <Ionicons name="arrow-back" size={24} color="white" />
         </TouchableOpacity>
         <View>
@@ -46,7 +43,7 @@ const Rewards=({navigation}) =>{
             <Image
               style={{width: 20, height: 20}}
               source={require('../assets/images/reward.png')}
-              />
+            />
             <Text style={{color: 'white', fontWeight: 'bold'}}>9 Points</Text>
           </LinearGradient>
         </View>
@@ -73,7 +70,7 @@ const Rewards=({navigation}) =>{
               <Image
                 style={{width: 20, height: 20}}
                 source={require('../assets/images/reward.png')}
-                />
+              />
               <Text style={{color: 'red'}}> 1</Text>
             </View>
           </View>
@@ -90,7 +87,7 @@ const Rewards=({navigation}) =>{
               <Image
                 style={{width: 20, height: 20}}
                 source={require('../assets/images/reward.png')}
-                />
+              />
               <Text style={{color: 'red'}}> 7</Text>
             </View>
           </View>
@@ -106,14 +103,14 @@ const Rewards=({navigation}) =>{
                   width={125}
                   height={screen.height * 0.002}
                   color="#ff4f9e"
-                  />
+                />
               </View>
             </View>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <Image
                 style={{width: 20, height: 20}}
                 source={require('../assets/images/reward.png')}
-                />
+              />
               <Text style={{color: 'red'}}> 28</Text>
             </View>
           </View>
@@ -125,7 +122,7 @@ const Rewards=({navigation}) =>{
               <Image
                 style={{width: 20, height: 20}}
                 source={require('../assets/images/reward.png')}
-                />
+              />
               <Text style={{color: 'red'}}> 50</Text>
             </View>
           </View>
@@ -139,7 +136,7 @@ const Rewards=({navigation}) =>{
               <Image
                 style={{width: 20, height: 20}}
                 source={require('../assets/images/reward.png')}
-                />
+              />
               <Text style={{color: 'red'}}> 10</Text>
             </View>
           </View>
@@ -161,11 +158,8 @@ const Rewards=({navigation}) =>{
         </LinearGradient>
       </TouchableOpacity>
     </View>
-    </DrawerSceneWrapper>
   );
 }
-
-export default Rewards;
 
 const styles = StyleSheet.create({
   container: {

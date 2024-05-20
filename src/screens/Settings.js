@@ -11,17 +11,15 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
-import Ionicons from 'react-native-vector-icons/Ionicons'
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {deleteAccountAction} from '../store/userAction';
 import AwesomeAlert from 'react-native-awesome-alerts';
-import DrawerSceneWrapper from '../components/DrawerSceneWrappers';
 
 const screen = Dimensions.get('screen');
 
-const Settings= ({navigation})=> {
-  const {openDrawer} = navigation;
+export default function Settings() {
+  const navigation = useNavigation();
   const dispatch = useDispatch();
   const user = useSelector(state => state.user);
   const [showAlert, setShowAlert] = useState(false);
@@ -31,21 +29,11 @@ const Settings= ({navigation})=> {
   };
   // console.log(user)
   return (
-    <DrawerSceneWrapper>
-
     <View style={styles.container}>
       <LinearGradient
         style={styles.background}
-        colors={['#833ab4', '#fd1d1d', '#fcb045']}>   
-        </LinearGradient>
-        <View style={styles.header}>
-        <TouchableOpacity onPress={openDrawer}>
-          <Ionicons name="arrow-back" size={24} color="white" />
-        </TouchableOpacity>
-        <View style={{position: 'absolute', left: screen.width*0.3, right: screen.width*0.3, alignItems: 'center'}}>
-          <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>Settings</Text>
-        </View>
-      </View>
+        colors={['#833ab4', '#fd1d1d', '#fcb045']}></LinearGradient>
+      <StatusBar style="light" />
       <View style={styles.body}>
         <View style={styles.bodypart}>
           <TouchableOpacity
@@ -81,35 +69,32 @@ const Settings= ({navigation})=> {
         show={showAlert}  
         title='Delete Account' 
         titleStyle={{fontSize: 28, color: 'red'}}
-        
+
         message='Are you want to delete this account ?'
         messageStyle={{color: 'black', fontSize: 22}}
-        
+
         showCancelButton={true}
         cancelText='Cancel'
         cancelButtonColor='blue'
         onCancelPressed={()=>{
           setShowAlert(false)
         }}
-        
+
         showConfirmButton={true}
         confirmText='Delete'
         confirmButtonColor="#DD6B55"
         onConfirmPressed={() => {
           handleDeleteAccount()
         }}
-        
+
         // showProgress ={true}
         // progressColor='red'
         // progressSize={40}
         />
 
     </View>
-    </DrawerSceneWrapper>
   );
 }
-
-export default Settings;
 
 const styles = StyleSheet.create({
   container: {
