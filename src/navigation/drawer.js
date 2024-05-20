@@ -1,10 +1,17 @@
 import React from "react";
-import { Platform } from "react-native";
+import { Platform, Text, View } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Welcome from "../screens/Welcome";
 import Rewards from "../screens/Rewards";
 import Settings from "../screens/Settings";
+import CustomDrawer from "../components/CustomDrawer";
+import Reminder from "../screens/Reminder";
+import Invite from "../screens/Invite";
+import Send from "../screens/Send";
+import Video from "../screens/Video";
+import Help from "../screens/Help";
+import Disclaimer from "../screens/Disclaimer";
 
 const Drawer= createDrawerNavigator();
 
@@ -21,7 +28,8 @@ const DrawerNavigator= ()=>{
     }
 
     return (
-        <Drawer.Navigator 
+        <Drawer.Navigator
+            drawerContent={props => <CustomDrawer {...props} />}
             drawerType='slide'
             screenOptions={{
                 headerShown: false,
@@ -32,49 +40,49 @@ const DrawerNavigator= ()=>{
                 drawerHideStatusBarOnOpen: Platform.OS === 'ios' ? true : false,
                 overlayColor: Colors.transparent,
                 drawerStyle: {
-                  backgroundColor: Colors.bg,
+                  backgroundColor: '#353847',
                   width: '60%',
                 },
                 sceneContainerStyle: {
-                  backgroundColor: Colors.bg,
+                  backgroundColor: '#353847',
                 },
             }}
         >
             <Drawer.Screen
-                name="Home"
+                name="Welcome"
                 component={Welcome}
                 options={{
                     drawerIcon: options => drawerIcon(options, 'home-outline'),
                 }}
             />
-            {/* <Drawer.Screen
+            <Drawer.Screen
                 name="Remider"
-                //component={Welcome}
+                component={Reminder}
                 options={{
                     drawerIcon: options => drawerIcon(options, 'bell-outline'),
                 }}
             />
             <Drawer.Screen
                 name="Invite your friends"
-                //component={Welcome}
+                component={Invite}
                 options={{
                     drawerIcon: options => drawerIcon(options, 'account-circle-outline'),
                 }}
             />
             <Drawer.Screen
                 name="Send a testimanial"
-                //component={Welcome}
+                component={Send}
                 options={{
                     drawerIcon: options => drawerIcon(options, 'email-outline'),
                 }}
             />
             <Drawer.Screen
                 name="Welcome video"
-                //component={Welcome}
+                component={Video}
                 options={{
                     drawerIcon: options => drawerIcon(options, 'youtube-tv'),
                 }}
-            /> */}
+            />
             <Drawer.Screen
                 name="Rewards"
                 component={Rewards}
@@ -82,13 +90,13 @@ const DrawerNavigator= ()=>{
                     drawerIcon: options => drawerIcon(options, 'trophy-outline'),
                 }}
             />
-            {/* <Drawer.Screen
+            <Drawer.Screen
                 name="Help & Support"
-                //component={Welcome}
+                component={Help}
                 options={{
                     drawerIcon: options => drawerIcon(options, 'help-circle-outline'),
                 }}
-            /> */}
+            />
             <Drawer.Screen
                 name="Settings"
                 component={Settings}
@@ -96,13 +104,13 @@ const DrawerNavigator= ()=>{
                     drawerIcon: options => drawerIcon(options, 'cog-outline'),
                 }}
             />
-            {/* <Drawer.Screen
+            <Drawer.Screen
                 name="Disclaimer"
-                //component={Welcome}
+                component={Disclaimer}
                 options={{
                     drawerIcon: options => drawerIcon(options, 'alert-outline'),
                 }}
-            /> */}
+            />
         </Drawer.Navigator>
     );
 }
