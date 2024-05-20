@@ -123,6 +123,10 @@ dependencies {
 //     iconFontNames: [ 'MaterialIcons.ttf', 'EvilIcons.ttf' ] // Specify font files
 // ]
 
+project.ext.react = [
+  enableHermes: true  // <- here | clean and rebuild if changing
+]
+
 apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
 
 apply from: file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)

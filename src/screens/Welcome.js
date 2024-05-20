@@ -1,19 +1,16 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { View, Image, Text, StyleSheet, StatusBar, TextInput, TouchableOpacity, Button, FlatList} from "react-native";
+import React from "react";
+import { View, Image, Text, StyleSheet, StatusBar, TextInput, TouchableOpacity, Button} from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
 import {Dimensions} from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import { useIsFocused, useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutAction } from "../store/userAction";
-import TodoItem from "../components/TodoItem";
-import { deleteTodoAction, getTodoByIdAction, getTodosAction } from "../store/todoAction";
-import AwesomeAlert from "react-native-awesome-alerts";
 
 const screen = Dimensions.get('screen');
 
-export default function Welcome(){
-    const navigation = useNavigation();
+const Welcome = ({navigation}) => {
+    const {openDrawer}= navigation;
     const dispatch= useDispatch();
     const [showAlert, setShowAlert] = useState(false);
     const [deletingTodoId, setDeletingTodoId] = useState(null);
@@ -57,82 +54,30 @@ export default function Welcome(){
         const userName= lName + ' ' + fName;
  
     return (
-        <>
-        <View style={styles.container}>
-            <LinearGradient 
-                style={styles.background}
-                colors={['#833ab4','#fd1d1d','#fcb045']}
-                >
-            </LinearGradient>
-            <StatusBar style='light'/>
-            <View style={styles.header}>
-                <TouchableOpacity onPress={() => navigation.navigate('Menu')}>
-                    <Image style={styles.header_image} source={require('../assets/images/upnow.png')}/>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <AntDesign style={{paddingRight: 20}} name="search1" size={24} color="white" />
-                </TouchableOpacity>
-            </View>
-            <View style={styles.header}>
-                <Text style={{color:'white'}}>Welcome to Home Screen, {userName}</Text>
-                <Button title="Logout" onPress={handleLogout} />
-            </View>
-            <View style={{alignItems: 'center'}}>
-                <Text style={{fontSize: 30, color: 'white'}}>To do List</Text>
-            </View>
-            <View style={styles.list}>
-                <FlatList
-                    style={styles.flatList}
-                    data={listTodo}
-                    // refreshing= {onload}
-                    renderItem={({item}) => (
-                        <TodoItem item={item} pressHandler ={pressHandler} pressBtnHandler={() => {
-                            setShowAlert(true),
-                            setDeletingTodoId(item.id)
-                        }}
-                        />
-                    )}
-                    keyExtractor={(item, index) => String(index)}
-                    />
-            </View>
-            <View style={styles.addBtn}>
-                <TouchableOpacity onPress={() => navigation.navigate('AddTodo')}>
-                    <AntDesign name='pluscircle' size={50} color='white'/>
-                </TouchableOpacity>
-            </View>
-            
-            <AwesomeAlert
-                show={showAlert}  
-                title='Delete Todo' 
-                titleStyle={{fontSize: 28, color: 'red'}}
-                
-                message='Are you want to delete this todo ?'
-                messageStyle={{color: 'black', fontSize: 22}}
-                
-                showCancelButton={true}
-                cancelText='Cancel'
-                cancelButtonColor='blue'
-                onCancelPressed={()=>{
-                    setShowAlert(false),
-                    setDeletingTodoId(null)
-                }}
-                
-                showConfirmButton={true}
-                confirmText='Delete'
-                confirmButtonColor="#DD6B55"
-                onConfirmPressed={() => {
-                    handleConfirmDelete(deletingTodoId)
-                }}
-                
-                // showProgress ={true}
-                // progressColor='red'
-                // progressSize={40}
-                />
-
-        </View>
-        </>
+        <DrawerSceneWrapper>
+            <SafeAreaView style={styles.container}>
+                <LinearGradient 
+                    style={styles.background}
+                    colors={['#833ab4','#fd1d1d','#fcb045']}
+                    >
+                </LinearGradient>
+                <View style={styles.wrapper}>
+                    <View style={styles.searchBar}>
+                        <TouchableOpacity onPress={openDrawer}>
+                        <Icon name="menu" size={20} color="#666" />
+                        </TouchableOpacity>
+                        <Text style={styles.searchTextPlaceHolder}>Search Here</Text>
+                    </View>
+                    <View style={styles.header}>
+                        <Text style={{color:'white'}}>Welcome to Home Screen, {userName}</Text>
+                        <Button title="Logout" onPress={handleLogout} />
+                    </View>
+                    </View>
+            </SafeAreaView>
+        </DrawerSceneWrapper>
     );
 }
+export default Welcome;
 
 const styles= StyleSheet.create({
     container:{
@@ -150,53 +95,14 @@ const styles= StyleSheet.create({
         height: 1000,
         opacity: 0.2,
     },
-    header:{
+    wrapper: {padding: 16},
+    searchBar: {
+        backgroundColor: '#fff',
+        borderRadius: 50,
+        padding: 16,
         flexDirection: 'row',
-        justifyContent: 'space-between',
         alignItems: 'center',
-        paddingLeft: 10,
-        paddingTop: 10,
-        height: screen.height*0.07,
     },
-    header_image:{
-        width: 50,
-        height: 50,
-        borderRadius: 50,
-        marginRight: 25
-    },
-    body:{
-        paddingVertical: 35,
-        paddingHorizontal: 35,
-    },
-    textInput:{
-        borderRadius: 50,
-        backgroundColor: '#233f63',
-        flexDirection: 'row',
-        height: screen.height * 0.06,
-        alignItems: 'center',
-        paddingHorizontal: 20,
-        marginBottom: 15
-    },
-    button:{
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingVertical: 12,
-        paddingHorizontal: 32,
-        borderRadius: 50,
-        elevation: 3,
-        backgroundColor: '#ff4f9e',
-        marginVertical: 25,
-    },
-    list:{
-      marginTop: 20,
-    },
-    addBtn:{
-        position: 'absolute',
-        bottom: 15,
-        right: 15
-    },
-    flatList:{
-        height: screen.height * 0.7
-    }
+    
     
 });
