@@ -3,6 +3,7 @@ import { userReducer } from './userReducer';
 import { persistReducer, persistStore } from "redux-persist";
 import storage from "@react-native-async-storage/async-storage";
 import { thunk } from 'redux-thunk';
+import { todoReducer } from './todoReducer';
 
 const persistConfig = {
     key: "root",
@@ -11,6 +12,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
     user: userReducer,
+    todo: todoReducer,
     userData: () => persistReducer(persistConfig, userReducer)
 })
 

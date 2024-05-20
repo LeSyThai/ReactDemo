@@ -3,7 +3,7 @@ import { View, Image, Text, StyleSheet, StatusBar, TextInput, TouchableOpacity, 
 import LinearGradient from 'react-native-linear-gradient';
 import {Dimensions} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useNavigation } from "@react-navigation/native";
+import {useIsFocused, useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutAction } from "../store/userAction";
 import DrawerSceneWrapper from "../components/DrawerSceneWrappers";
