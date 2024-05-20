@@ -25,7 +25,9 @@ const CustomDrawer = (props) =>{
         <View style={styles.container}>
             <LinearGradient 
                 style={styles.background}
-                colors={['#833ab4','#fd1d1d','#fcb045']}
+                colors={['#333e51','#303f51','#3b3a49']}
+                start={{x: 0, y: 0}}
+                end={{x: 1, y: 1}}
                 >
             </LinearGradient>
             <View style={styles.header}>

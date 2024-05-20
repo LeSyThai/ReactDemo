@@ -44,7 +44,7 @@ const DrawerNavigator= ()=>{
                   width: '60%',
                 },
                 sceneContainerStyle: {
-                  backgroundColor: '#353847',
+                  backgroundColor: '#293b4d',
                 },
             }}
         >

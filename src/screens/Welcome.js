@@ -30,7 +30,7 @@ const Welcome = ({navigation}) => {
             <SafeAreaView style={styles.container}>
                 <LinearGradient 
                     style={styles.background}
-                    colors={['#833ab4','#fd1d1d','#fcb045']}
+                    colors={['#35667f','#2c617a','#294157']}
                     >
                 </LinearGradient>
                 <View style={styles.wrapper}>
