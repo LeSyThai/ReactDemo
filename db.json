@@ -14,6 +14,94 @@
       "id": "3",
       "email": "lmao@gmail.com",
       "password": "123456"
+    },
+    {
+      "id": "2df3",
+      "fName": "asd",
+      "lName": "asd",
+      "email": "asd@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "6336",
+      "fName": "hm",
+      "lName": "hmmm ",
+      "email": "hmm@gmail.com",
+      "password": "123456"
+    }
+  ],
+  "todos": [
+    {
+      "id": "1",
+      "userid": "1",
+      "title": "Wake up",
+      "description": "Wake up at 6:30 AM"
+    },
+    {
+      "userid": "1",
+      "title": "Wait bus",
+      "description": "7:46 AM in vincom mega mall",
+      "id": "2"
+    },
+    {
+      "id": "3",
+      "userid": "1",
+      "title": "Work",
+      "description": "8:30AM - 6:00PM"
+    },
+    {
+      "id": "4",
+      "userid": "2",
+      "title": "Do Project",
+      "description": "Tomorrow very important"
+    },
+    {
+      "id": "5",
+      "userid": "3",
+      "title": "Go Festival",
+      "description": "Sunday 8:00AM"
+    },
+    {
+      "id": "6",
+      "userid": "2df3",
+      "title": "Go Festival",
+      "description": "Sunday 8:00AM"
+    },
+    {
+      "id": "7ff4",
+      "userid": "6336",
+      "title": "hmm",
+      "description": "123456"
+    },
+    {
+      "userid": "6336",
+      "title": "yolo ",
+      "description": "1234",
+      "id": "2c8a"
+    },
+    {
+      "userid": "1",
+      "title": "45",
+      "description": "sda22",
+      "id": "4c14"
+    },
+    {
+      "id": "1cab",
+      "userid": "2",
+      "title": "as",
+      "description": "asdasd"
+    },
+    {
+      "userid": "3",
+      "title": "hnu",
+      "description": "1715",
+      "id": "a312"
+    },
+    {
+      "userid": "3",
+      "title": "1",
+      "description": "",
+      "id": "5b96"
     }
   ]
 }

@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {View, Text, StyleSheet,Image, TouchableOpacity, Dimensions, StatusBar, FlatList} from 'react-native'
+import LinearGradient from 'react-native-linear-gradient';
 import Entypo from 'react-native-vector-icons/Entypo';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Octicons from 'react-native-vector-icons/Octicons';
