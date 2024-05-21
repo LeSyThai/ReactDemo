@@ -65,16 +65,16 @@ const Welcome = ({navigation}) => {
                     colors={['#35667f','#2c617a','#294157']}
                     >
                 </LinearGradient>
+                <View style={styles.header}>
+                    <Text style={{color:'white'}}>Welcome to Home Screen, {userName}</Text>
+                    <Button title="Logout" onPress={handleLogout} />
+                </View>
                 <View style={styles.wrapper}>
                     <View style={styles.searchBar}>
                         <TouchableOpacity onPress={openDrawer}>
                         <Icon name="menu" size={20} color="#666" />
                         </TouchableOpacity>
                         <Text style={styles.searchTextPlaceHolder}>Search Here</Text>
-                    </View>
-                    <View style={styles.header}>
-                        <Text style={{color:'white'}}>Welcome to Home Screen, {userName}</Text>
-                        <Button title="Logout" onPress={handleLogout} />
                     </View>
                 </View>
                 <View style={{alignItems: 'center'}}>
@@ -170,6 +170,13 @@ const styles= StyleSheet.create({
     searchTextPlaceHolder: {
         color: '#666',
         marginLeft: 8,
+    },
+    header:{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingTop: 20,
+        paddingHorizontal: 10
     },
     list:{
         marginTop: 20,
