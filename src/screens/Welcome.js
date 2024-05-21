@@ -1,19 +1,21 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { View, Image, Text, StyleSheet, StatusBar, TextInput, TouchableOpacity, Button, FlatList} from "react-native";
+import React,{ useCallback, useEffect, useMemo, useState }  from "react";
+import { View, Image, Text, StyleSheet, FlatList, TouchableOpacity, Button, SafeAreaView} from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
 import {Dimensions} from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import { useIsFocused, useNavigation } from "@react-navigation/native";
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import AntDesign from 'react-native-vector-icons/AntDesign'
+import {useIsFocused, useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutAction } from "../store/userAction";
 import TodoItem from "../components/TodoItem";
 import { deleteTodoAction, getTodoByIdAction, getTodosAction } from "../store/todoAction";
 import AwesomeAlert from "react-native-awesome-alerts";
+import DrawerSceneWrapper from "../components/DrawerSceneWrappers";
 
 const screen = Dimensions.get('screen');
 
-export default function Welcome(){
-    const navigation = useNavigation();
+const Welcome = ({navigation}) => {
+    const {openDrawer}= navigation;
     const dispatch= useDispatch();
     const [showAlert, setShowAlert] = useState(false);
     const [deletingTodoId, setDeletingTodoId] = useState(null);
@@ -21,8 +23,7 @@ export default function Welcome(){
 
     const user= useSelector((state) => state.user)
     const todos= useSelector((state) => state.todo)
-
-    //dispatch(getTodosAction(user.user[0].id));
+    
     const onload = async()=>{
         await dispatch(getTodosAction(user.user[0].id));
     }
@@ -37,8 +38,6 @@ export default function Welcome(){
     }, [todos.todos])
 
 
-    //console.log(todos);
-
     const pressHandler = (id) =>{
         navigation.navigate('UpdateTodo', {id})
     }
@@ -47,7 +46,8 @@ export default function Welcome(){
         await dispatch(deleteTodoAction(deletingTodoId));
         setShowAlert(false);
       };
-    
+
+
     const handleLogout = () => {
         dispatch(logoutAction());
         //navigation.navigate('Login'); 
@@ -55,29 +55,29 @@ export default function Welcome(){
         const fName= user.user?.[0]?.fName ?? 'min';
         const lName= user.user?.[0]?.lName ?? 'Ad'
         const userName= lName + ' ' + fName;
- 
+
     return (
-        <>
-        <View style={styles.container}>
-            <LinearGradient 
-                style={styles.background}
-                colors={['#833ab4','#fd1d1d','#fcb045']}
-                >
-            </LinearGradient>
-            <StatusBar style='light'/>
-            <View style={styles.header}>
-                <TouchableOpacity onPress={() => navigation.navigate('Menu')}>
-                    <Image style={styles.header_image} source={require('../assets/images/upnow.png')}/>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <AntDesign style={{paddingRight: 20}} name="search1" size={24} color="white" />
-                </TouchableOpacity>
-            </View>
-            <View style={styles.header}>
-                <Text style={{color:'white'}}>Welcome to Home Screen, {userName}</Text>
-                <Button title="Logout" onPress={handleLogout} />
-            </View>
-            <View style={{alignItems: 'center'}}>
+
+        <DrawerSceneWrapper>
+            <SafeAreaView style={styles.container}>
+                <LinearGradient 
+                    style={styles.background}
+                    colors={['#35667f','#2c617a','#294157']}
+                    >
+                </LinearGradient>
+                <View style={styles.wrapper}>
+                    <View style={styles.searchBar}>
+                        <TouchableOpacity onPress={openDrawer}>
+                        <Icon name="menu" size={20} color="#666" />
+                        </TouchableOpacity>
+                        <Text style={styles.searchTextPlaceHolder}>Search Here</Text>
+                    </View>
+                    <View style={styles.header}>
+                        <Text style={{color:'white'}}>Welcome to Home Screen, {userName}</Text>
+                        <Button title="Logout" onPress={handleLogout} />
+                    </View>
+                </View>
+                <View style={{alignItems: 'center'}}>
                 <Text style={{fontSize: 30, color: 'white'}}>To do List</Text>
             </View>
             <View style={styles.list}>
@@ -129,10 +129,11 @@ export default function Welcome(){
                 // progressSize={40}
                 />
 
-        </View>
-        </>
+            </SafeAreaView>
+        </DrawerSceneWrapper>
     );
 }
+export default Welcome;
 
 const styles= StyleSheet.create({
     container:{
@@ -150,53 +151,36 @@ const styles= StyleSheet.create({
         height: 1000,
         opacity: 0.2,
     },
-    header:{
+    wrapper: {padding: 16},
+    searchBar: {
+        backgroundColor: '#fff',
+        borderRadius: 50,
+        padding: 16,
         flexDirection: 'row',
-        justifyContent: 'space-between',
         alignItems: 'center',
-        paddingLeft: 10,
-        paddingTop: 10,
-        height: screen.height*0.07,
+        shadowOffset: {
+        width: 0,
+        height: 5,
+        },
+        shadowColor: '#000',
+        shadowOpacity: 0.1,
+        shadowRadius: 10,
+        marginBottom: 12,
     },
-    header_image:{
-        width: 50,
-        height: 50,
-        borderRadius: 50,
-        marginRight: 25
-    },
-    body:{
-        paddingVertical: 35,
-        paddingHorizontal: 35,
-    },
-    textInput:{
-        borderRadius: 50,
-        backgroundColor: '#233f63',
-        flexDirection: 'row',
-        height: screen.height * 0.06,
-        alignItems: 'center',
-        paddingHorizontal: 20,
-        marginBottom: 15
-    },
-    button:{
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingVertical: 12,
-        paddingHorizontal: 32,
-        borderRadius: 50,
-        elevation: 3,
-        backgroundColor: '#ff4f9e',
-        marginVertical: 25,
+    searchTextPlaceHolder: {
+        color: '#666',
+        marginLeft: 8,
     },
     list:{
-      marginTop: 20,
-    },
-    addBtn:{
-        position: 'absolute',
-        bottom: 15,
-        right: 15
-    },
-    flatList:{
-        height: screen.height * 0.7
-    }
+        marginTop: 20,
+      },
+      addBtn:{
+          position: 'absolute',
+          bottom: 15,
+          right: 15
+      },
+      flatList:{
+          height: screen.height * 0.7
+      }   
     
 });

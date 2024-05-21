@@ -10,10 +10,10 @@ import {
 } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
-import { useForm, Controller, useFormState} from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import CustomInput from '../components/CustomInput';
 import { useNavigation } from '@react-navigation/native';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { loginAction } from '../store/userAction';
 import notifee, { AndroidImportance, AndroidVisibility, TimestampTrigger, TriggerType } from '@notifee/react-native';
@@ -96,6 +96,7 @@ const styles= StyleSheet.create({
         position: 'absolute', 
     }
 });
+
 
 function Login(){
     const navigation = useNavigation();
@@ -270,3 +271,4 @@ function Login(){
 }
 
 export default Login;
+  

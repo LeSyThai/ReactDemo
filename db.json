@@ -103,5 +103,31 @@
       "description": "",
       "id": "5b96"
     }
+  ],
+  "todos": [
+    {
+      "userid": "1",
+      "title": "Wake up",
+      "description": "6:30AM and 5 minutes more",
+      "id": "1"
+    },
+    {
+      "id": "2",
+      "userid": "1",
+      "title": "Eat",
+      "description": "7:00AM"
+    },
+    {
+      "id": "3",
+      "userid": "2",
+      "title": "Wake up",
+      "description": "8:30AM"
+    },
+    {
+      "id": "4",
+      "userid": "2",
+      "title": "Work",
+      "description": "9:30AM"
+    }
   ]
 }
