@@ -3,6 +3,7 @@ import { View, Image, Text, StyleSheet, FlatList, TouchableOpacity, Button, Safe
 import LinearGradient from 'react-native-linear-gradient';
 import {Dimensions} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import AntDesign from 'react-native-vector-icons/AntDesign'
 import {useIsFocused, useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { logoutAction } from "../store/userAction";

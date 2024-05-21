@@ -8,6 +8,8 @@ import { useSelector } from 'react-redux';
 import DrawerNavigator from './drawer';
 import { Settings } from 'react-native';
 import UserInfor from '../screens/UserInfor';
+import AddTodo from '../screens/AddTodo';
+import UpdateTodo from '../screens/UpdateTodo';
 
 const Stack = createNativeStackNavigator();
 
@@ -58,6 +60,34 @@ export default function AppNavigation(){
                             },
                             headerTintColor: 'white',
                             title: "User info",
+                            headerTitleAlign: 'center',
+                            headerBackTitle: 'Back'
+                        }}
+                    />
+                    <Stack.Screen
+                        name= 'AddTodo'
+                        component={AddTodo}
+                        options={{
+                            headerShown: true,
+                            headerStyle:{
+                                backgroundColor: '#2b356d'
+                            },
+                            headerTintColor: 'white',
+                            title: "Add Todo",
+                            headerTitleAlign: 'center',
+                            headerBackTitle: 'Back'
+                        }}
+                    />
+                    <Stack.Screen
+                        name= 'UpdateTodo'
+                        component={UpdateTodo}
+                        options={{
+                            headerShown: true,
+                            headerStyle:{
+                                backgroundColor: '#2b356d'
+                            },
+                            headerTintColor: 'white',
+                            title: "Update Todo",
                             headerTitleAlign: 'center',
                             headerBackTitle: 'Back'
                         }}

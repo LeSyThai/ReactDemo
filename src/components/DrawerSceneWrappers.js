@@ -15,7 +15,7 @@ const DrawerSceneWrapper = ({children}) => {
 
   const progress= useDrawerProgress();
   const {width} = useWindowDimensions();
-  console.log(progress.value);
+  //console.log(progress.value);
 
   const animatedStyle= useAnimatedStyle(() =>({
       transform: [
