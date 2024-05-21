@@ -6,14 +6,12 @@ import {
   Image,
   TouchableOpacity,
   Dimensions,
-  StatusBar,
   ProgressBarAndroid,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import {useNavigation} from '@react-navigation/native';
 import * as Progress from 'react-native-progress';
 import DrawerSceneWrapper from '../components/DrawerSceneWrappers';
 

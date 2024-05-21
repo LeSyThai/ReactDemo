@@ -3,27 +3,18 @@ import {
   View,
   Text,
   StyleSheet,
-  Image,
   TouchableOpacity,
   Dimensions,
-  StatusBar,
-  FlatList,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import {useDispatch, useSelector} from 'react-redux';
-import {deleteAccountAction} from '../store/userAction';
-import AwesomeAlert from 'react-native-awesome-alerts';
 import DrawerSceneWrapper from '../components/DrawerSceneWrappers';
 
 const screen = Dimensions.get('screen');
 
 const Help= ({navigation})=> {
   const {openDrawer} = navigation;
-  const dispatch = useDispatch();
-  const user = useSelector(state => state.user);
-  const [showAlert, setShowAlert] = useState(false);
 
   return (
     <DrawerSceneWrapper>

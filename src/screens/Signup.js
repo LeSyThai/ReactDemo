@@ -12,7 +12,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import { useForm, Controller, useFormState} from 'react-hook-form';
 import CustomInput from '../components/CustomInput';
 import CheckBox from '@react-native-community/checkbox';
-import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 import { signupAction } from '../store/userAction';

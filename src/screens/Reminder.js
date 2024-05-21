@@ -32,7 +32,7 @@ const Reminder= ({navigation})=> {
             <Ionicons name="arrow-back" size={24} color="white" />
             </TouchableOpacity>
             <View style={{position: 'absolute', left: screen.width*0.3, right: screen.width*0.3, alignItems: 'center'}}>
-            <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>Help & Support</Text>
+            <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>Reminder</Text>
             </View>
         </View>
     </View>

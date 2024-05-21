@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Keyboard, TouchableWithoutFeedback} from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
 import {Dimensions} from 'react-native';
-import AntDesign from 'react-native-vector-icons/AntDesign';
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm, Controller, useFormState} from 'react-hook-form';

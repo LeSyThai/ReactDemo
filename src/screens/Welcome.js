@@ -1,5 +1,5 @@
-import React,{ useCallback, useEffect, useMemo, useState }  from "react";
-import { View, Image, Text, StyleSheet, FlatList, TouchableOpacity, Button, SafeAreaView} from "react-native";
+import React,{ useEffect, useMemo, useState }  from "react";
+import { View, Text, StyleSheet, FlatList, TouchableOpacity, Button, SafeAreaView} from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
 import {Dimensions} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';

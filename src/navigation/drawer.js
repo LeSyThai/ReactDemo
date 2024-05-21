@@ -21,7 +21,7 @@ const DrawerNavigator= ()=>{
             <Icon
                 name= {name}
                 size= {size}
-                color={focused ? Colors.active : Colors. inactive}
+                color={focused ? 'red' : Colors. inactive}
             />
 
         );
@@ -33,15 +33,20 @@ const DrawerNavigator= ()=>{
             drawerType='slide'
             screenOptions={{
                 headerShown: false,
-                drawerActiveBackgroundColor: Colors.transparent,
+                drawerActiveBackgroundColor: '#243342',
                 drawerInactiveBackgroundColor: Colors.transparent,
                 drawerActiveTintColor: Colors.active,
                 drawerInactiveTintColor: Colors.inactive,
                 drawerHideStatusBarOnOpen: Platform.OS === 'ios' ? true : false,
                 overlayColor: Colors.transparent,
+                drawerItemStyle:{
+                    borderBottomLeftRadius: 50,
+                    borderTopLeftRadius: 50,
+                    paddingLeft: 10
+                },
                 drawerStyle: {
                   backgroundColor: '#353847',
-                  width: '60%',
+                  width: '65%',
                 },
                 sceneContainerStyle: {
                   backgroundColor: '#293b4d',
@@ -119,7 +124,7 @@ export default DrawerNavigator;
 
 const Colors = {
   bg: '#009688',
-  active: '#fff',
-  inactive: '#eee',
+  active: 'white',
+  inactive: 'grey',
   transparent: 'transparent',
 };

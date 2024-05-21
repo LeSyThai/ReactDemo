@@ -5,13 +5,7 @@ import {
     Button, 
     StyleSheet, 
     Alert, 
-    TouchableOpacity,
-    ImageBackground,
-    TextInput
 } from "react-native";
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import Feather from 'react-native-vector-icons/Feather';
 
 const EditProfile = () =>{
     return (
