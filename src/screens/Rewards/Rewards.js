@@ -13,7 +13,7 @@ import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import * as Progress from 'react-native-progress';
-import DrawerSceneWrapper from '../components/DrawerSceneWrappers';
+import DrawerSceneWrapper from '../../components/drawer_navigation/DrawerSceneWrappers';
 
 const screen = Dimensions.get('screen');
 
@@ -42,7 +42,7 @@ const Rewards= ({navigation}) => {
             }}>
             <Image
               style={{width: 20, height: 20}}
-              source={require('../assets/images/reward.png')}
+              source={require('../../assets/images/reward.png')}
               />
             <Text style={{color: 'white', fontWeight: 'bold'}}>9 Points</Text>
           </LinearGradient>
@@ -69,7 +69,7 @@ const Rewards= ({navigation}) => {
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <Image
                 style={{width: 20, height: 20}}
-                source={require('../assets/images/reward.png')}
+                source={require('../../assets/images/reward.png')}
                 />
               <Text style={{color: 'red'}}> 1</Text>
             </View>
@@ -86,7 +86,7 @@ const Rewards= ({navigation}) => {
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <Image
                 style={{width: 20, height: 20}}
-                source={require('../assets/images/reward.png')}
+                source={require('../../assets/images/reward.png')}
                 />
               <Text style={{color: 'red'}}> 7</Text>
             </View>
@@ -109,7 +109,7 @@ const Rewards= ({navigation}) => {
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <Image
                 style={{width: 20, height: 20}}
-                source={require('../assets/images/reward.png')}
+                source={require('../../assets/images/reward.png')}
                 />
               <Text style={{color: 'red'}}> 28</Text>
             </View>
@@ -121,7 +121,7 @@ const Rewards= ({navigation}) => {
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <Image
                 style={{width: 20, height: 20}}
-                source={require('../assets/images/reward.png')}
+                source={require('../../assets/images/reward.png')}
                 />
               <Text style={{color: 'red'}}> 50</Text>
             </View>
@@ -135,7 +135,7 @@ const Rewards= ({navigation}) => {
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <Image
                 style={{width: 20, height: 20}}
-                source={require('../assets/images/reward.png')}
+                source={require('../../assets/images/reward.png')}
                 />
               <Text style={{color: 'red'}}> 10</Text>
             </View>

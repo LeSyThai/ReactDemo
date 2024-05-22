@@ -70,7 +70,7 @@ export default function UserInfor(){
                     {/* <Image style={styles.profile_image} source={ {uri: image}}/>
                     : <Image style={styles.profile_image} source={require('../assets/images/Valar,VaalmonicanHallowHymn.png')}/> 
                     } */}
-                    <Image style={styles.profile_image} source={require('../assets/images/Valar,VaalmonicanHallowHymn.png')}/> 
+                    <Image style={styles.profile_image} source={require('../../assets/images/Valar,VaalmonicanHallowHymn.png')}/> 
                     <TouchableOpacity style={{paddingVertical: 10}} onPress={() => requestCameraPermission()}>
                         <Text style={{fontSize: 15, color: 'red'}}>Change profile photo</Text>
                     </TouchableOpacity>

@@ -6,11 +6,11 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import {useIsFocused, useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import { logoutAction } from "../store/userAction";
-import TodoItem from "../components/TodoItem";
-import { deleteTodoAction, getTodoByIdAction, getTodosAction } from "../store/todoAction";
+import { logoutAction } from "../../store/userAction";
+import TodoItem from "../../components/todo_list/TodoItem";
+import { deleteTodoAction, getTodoByIdAction, getTodosAction } from "../../store/todoAction";
 import AwesomeAlert from "react-native-awesome-alerts";
-import DrawerSceneWrapper from "../components/DrawerSceneWrappers";
+import DrawerSceneWrapper from "../../components/drawer_navigation/DrawerSceneWrappers";
 
 const screen = Dimensions.get('screen');
 

@@ -9,11 +9,11 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import {useDispatch, useSelector} from 'react-redux';
-import DrawerSceneWrapper from '../components/DrawerSceneWrappers';
+import DrawerSceneWrapper from '../../components/drawer_navigation/DrawerSceneWrappers';
 
 const screen = Dimensions.get('screen');
 
-const Disclaimer= ({navigation})=> {
+const Invite= ({navigation})=> {
   const {openDrawer} = navigation;
 
   return (
@@ -29,7 +29,7 @@ const Disclaimer= ({navigation})=> {
             <Ionicons name="arrow-back" size={24} color="white" />
             </TouchableOpacity>
             <View style={{position: 'absolute', left: screen.width*0.3, right: screen.width*0.3, alignItems: 'center'}}>
-            <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>Disclaimer</Text>
+            <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>Invite friends</Text>
             </View>
         </View>
     </View>
@@ -37,7 +37,7 @@ const Disclaimer= ({navigation})=> {
   );
 }
 
-export default Disclaimer;
+export default Invite;
 
 const styles = StyleSheet.create({
   container: {

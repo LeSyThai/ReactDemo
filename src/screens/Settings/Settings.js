@@ -10,9 +10,9 @@ import LinearGradient from 'react-native-linear-gradient';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import {useDispatch, useSelector} from 'react-redux';
-import {deleteAccountAction} from '../store/userAction';
+import {deleteAccountAction} from '../../store/userAction';
 import AwesomeAlert from 'react-native-awesome-alerts';
-import DrawerSceneWrapper from '../components/DrawerSceneWrappers';
+import DrawerSceneWrapper from '../../components/drawer_navigation/DrawerSceneWrappers';
 
 const screen = Dimensions.get('screen');
 

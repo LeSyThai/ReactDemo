@@ -10,11 +10,11 @@ import {
 } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient';
 import { useForm, Controller, useFormState} from 'react-hook-form';
-import CustomInput from '../components/CustomInput';
+import CustomInput from '../../components/custom_input/CustomInput';
 import CheckBox from '@react-native-community/checkbox';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
-import { signupAction } from '../store/userAction';
+import { signupAction } from '../../store/userAction';
 
 const screen = Dimensions.get('screen');
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -46,7 +46,7 @@ export default function Signup(){
                     end={{ x: 1, y: 0.5 }}
                 >
                 <View style={styles.header}>
-                    <Image style={styles.header_image} source={require('../assets/images/upnow.png')}/>
+                    <Image style={styles.header_image} source={require('../../assets/images/upnow.png')}/>
                     <View>
                         <Text style={{color: 'white', fontWeight: 'bold', fontSize: 25}}>UpNow</Text>
                         <Text style={{color: '#3f7ad9'}}>Digital Hypnoterapy</Text>

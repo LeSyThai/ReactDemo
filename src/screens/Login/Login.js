@@ -11,11 +11,11 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import { useForm } from 'react-hook-form';
-import CustomInput from '../components/CustomInput';
+import CustomInput from '../../components/custom_input/CustomInput';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { loginAction } from '../store/userAction';
+import { loginAction } from '../../store/userAction';
 import notifee, { AndroidImportance, AndroidVisibility, TimestampTrigger, TriggerType } from '@notifee/react-native';
 
 const screen = Dimensions.get('screen');
@@ -157,7 +157,7 @@ function Login(){
                 largeIcon: 'https://my-cdn.com/users/123456.png',
                 
                 // Local image
-                largeIcon: require('../assets/images/Valar,VaalmonicanHallowHymn.png'),
+                largeIcon: require('../../assets/images/Valar,VaalmonicanHallowHymn.png'),
                 
                 // Absolute file path
                 //largeIcon: file:///xxxx/xxxx/xxxx.jpg,
@@ -180,7 +180,7 @@ function Login(){
                     >
                 
                 <View style={styles.header}>
-                    <Image style={styles.header_image} source={require('../assets/images/upnow.png')}/>
+                    <Image style={styles.header_image} source={require('../../assets/images/upnow.png')}/>
                     <View>
                         <Text style={{color: 'white', fontWeight: 'bold', fontSize: 25}}>UpNow</Text>
                         <Text style={{color: '#3f7ad9'}}>Digital Hypnoterapy</Text>

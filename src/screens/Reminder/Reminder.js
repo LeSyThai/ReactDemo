@@ -9,12 +9,15 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import {useDispatch, useSelector} from 'react-redux';
-import DrawerSceneWrapper from '../components/DrawerSceneWrappers';
+import DrawerSceneWrapper from '../../components/drawer_navigation/DrawerSceneWrappers';
 
 const screen = Dimensions.get('screen');
 
-const Invite= ({navigation})=> {
+const Reminder= ({navigation})=> {
   const {openDrawer} = navigation;
+  const dispatch = useDispatch();
+  const user = useSelector(state => state.user);
+  const [showAlert, setShowAlert] = useState(false);
 
   return (
     <DrawerSceneWrapper>
@@ -29,7 +32,7 @@ const Invite= ({navigation})=> {
             <Ionicons name="arrow-back" size={24} color="white" />
             </TouchableOpacity>
             <View style={{position: 'absolute', left: screen.width*0.3, right: screen.width*0.3, alignItems: 'center'}}>
-            <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>Invite friends</Text>
+            <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>Reminder</Text>
             </View>
         </View>
     </View>
@@ -37,7 +40,7 @@ const Invite= ({navigation})=> {
   );
 }
 
-export default Invite;
+export default Reminder;
 
 const styles = StyleSheet.create({
   container: {

@@ -31,14 +31,14 @@ const CustomDrawer = (props) =>{
                 >
             </LinearGradient>
             <View style={styles.header}>
-                <Image style={styles.header_image} source={require('../assets/images/upnow.png')}/>
+                <Image style={styles.header_image} source={require('../../assets/images/upnow.png')}/>
                 <TouchableOpacity>
                     <Entypo name="cross" size={24} color="white" />
                 </TouchableOpacity>
             </View>
             <View style={styles.body}>
                 <View style={styles.profile}>
-                    <Image style={styles.profile_image} source={require('../assets/images/Valar,VaalmonicanHallowHymn.png')}/>
+                    <Image style={styles.profile_image} source={require('../../assets/images/Valar,VaalmonicanHallowHymn.png')}/>
                     <Text style={{fontSize: 25, fontWeight: 'bold', color: 'white', marginTop: 10}}>
                         {userName}
                     </Text>

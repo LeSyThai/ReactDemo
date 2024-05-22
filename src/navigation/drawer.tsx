@@ -2,21 +2,21 @@ import React from "react";
 import { Platform, Text, View } from "react-native";
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import Welcome from "../screens/Welcome";
-import Rewards from "../screens/Rewards";
-import Settings from "../screens/Settings";
-import CustomDrawer from "../components/CustomDrawer";
-import Reminder from "../screens/Reminder";
-import Invite from "../screens/Invite";
-import Send from "../screens/Send";
-import Video from "../screens/Video";
-import Help from "../screens/Help";
-import Disclaimer from "../screens/Disclaimer";
+import Welcome from "../screens//Welcome/Welcome";
+import Rewards from "../screens/Rewards/Rewards";
+import Settings from "../screens/Settings/Settings";
+import CustomDrawer from "../components/drawer_navigation/CustomDrawer";
+import Reminder from "../screens/Reminder/Reminder";
+import Invite from "../screens/Invite/Invite";
+import Send from "../screens/Send/Send";
+import Video from "../screens/Video/Video";
+import Help from "../screens/Help/Help";
+import Disclaimer from "../screens/Disclaimer/Disclaimer";
 
 const Drawer= createDrawerNavigator();
 
 const DrawerNavigator= ()=>{
-    const drawerIcon= ({focused, size}, name) => {
+    const drawerIcon= ({focused, size}: {focused: any, size: any}, name: string) => {
         return (
             <Icon
                 name= {name}

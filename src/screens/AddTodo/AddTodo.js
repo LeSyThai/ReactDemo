@@ -5,8 +5,8 @@ import {Dimensions} from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm, Controller, useFormState} from 'react-hook-form';
-import CustomInput from "../components/CustomInput";
-import { addTodoAction } from "../store/todoAction";
+import CustomInput from "../../components/custom_input/CustomInput";
+import { addTodoAction } from "../../store/todoAction";
 
 const screen = Dimensions.get('screen');
 

@@ -1,17 +1,12 @@
 import * as React from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import Login from '../screens/Login';
-import { Screen } from 'react-native-screens';
-import Signup from '../screens/Signup';
+import Login from '../screens/Login/Login';
+import Signup from '../screens/Signup/Signup';
 import { useSelector } from 'react-redux';
-import Welcome from '../screens/Welcome';
-import Menu from '../screens/Menu';
-import Rewards from '../screens/Rewards';
-import Settings from '../screens/Settings';
-import UserInfor from '../screens/UserInfor';
-import AddTodo from '../screens/AddTodo';
-import UpdateTodo from '../screens/UpdateTodo';
+import UserInfor from '../screens/UserInfo/UserInfor';
+import AddTodo from '../screens/AddTodo/AddTodo';
+import UpdateTodo from '../screens/UpdateTodo/UpdateTodo';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import DrawerNavigator from './drawer';
 
