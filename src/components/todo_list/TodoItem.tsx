@@ -6,12 +6,12 @@ export default function TodoItem({item, pressBtnHandler, pressHandler}){
 
    return(
     <>
-    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+    <View style={styles.line}>
         <TouchableOpacity onPress={() => pressBtnHandler(item.id)} style={styles.deleteBtn}>
                     <Icon name='delete' size={30} color='#333' style={{flex: 1}}/>
         </TouchableOpacity>
         <TouchableOpacity style={styles.item} onPress={() => pressHandler(item.id)}>
-            <View style={{flexDirection: 'column', marginVertical: 16}}>
+            <View style={styles.box}>
                 <Text style={styles.itemTitle}>{item.title}</Text>
                 <Text style={styles.itemDescription}>{item.description}</Text>
             </View>
@@ -22,6 +22,14 @@ export default function TodoItem({item, pressBtnHandler, pressHandler}){
 }
 
 const styles= StyleSheet.create({
+    line:{
+        flexDirection: 'row', 
+        alignItems: 'center'
+    },
+    box:{
+        flexDirection: 'column', 
+        marginVertical: 16
+    },
     item:{
         //padding: 16,
         marginTop: 16,

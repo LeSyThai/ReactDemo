@@ -17,7 +17,7 @@ const screen= Dimensions.get('screen');
 
 const CustomDrawer = (props) =>{
     const {t} = useTranslation()
-    const user= useSelector((state) => state.user);
+    const user= useSelector((state: any) => state.user);
     const fName= user.user?.[0]?.fName ?? 'min';
     const lName= user.user?.[0]?.lName ?? 'Ad'
     const userName= lName + ' ' + fName;
@@ -38,9 +38,9 @@ const CustomDrawer = (props) =>{
                 </TouchableOpacity>
             </View>
             <View style={styles.body}>
-                <View style={styles.profile}>
+                <View>
                     <Image style={styles.profile_image} source={require('../../assets/images/Valar,VaalmonicanHallowHymn.png')}/>
-                    <Text style={{fontSize: 25, fontWeight: 'bold', color: 'white', marginTop: 10}}>
+                    <Text style={styles.usernameText}>
                         {userName}
                     </Text>
                 </View>
@@ -48,9 +48,9 @@ const CustomDrawer = (props) =>{
             <DrawerContentScrollView {...props} contentContainerStyle>
                 <DrawerItemList {...props}/>
             </DrawerContentScrollView>
-            <View style={{bottom: 20, flexDirection: 'row', marginHorizontal: 20}}>
+            <View style={styles.footer}>
                 <Text style={{color: 'white'}}>{t('Powered by ')} </Text>
-                <Text style={{color: 'white', fontWeight: 'bold'}}>UpNow</Text>
+                <Text style={styles.footerTitle}>UpNow</Text>
             </View>
 
         </View>
@@ -101,4 +101,19 @@ const styles= StyleSheet.create({
         borderColor: '#9e9595',
         borderWidth: 3
     },
+    usernameText:{
+        fontSize: 25, 
+        fontWeight: 'bold', 
+        color: 'white', 
+        marginTop: 10
+    },
+    footer:{
+        bottom: 20, 
+        flexDirection: 'row', 
+        marginHorizontal: 20
+    },
+    footerTitle:{
+        color: 'white', 
+        fontWeight: 'bold'
+    }
 });
