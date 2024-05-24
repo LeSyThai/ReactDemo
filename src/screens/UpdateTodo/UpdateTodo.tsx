@@ -1,32 +1,48 @@
-import React, { useEffect } from "react";
+import React, { useMemo } from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Keyboard, TouchableWithoutFeedback} from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
 import {Dimensions} from 'react-native';
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
-import { useForm, Controller, useFormState} from 'react-hook-form';
+import { useForm} from 'react-hook-form';
 import CustomInput from "../../components/custom_input/CustomInput";
-import { addTodoAction } from "../../store/todoAction";
+import { updateTodoAction } from "../../store/todoAction";
 import { useTranslation } from "react-i18next";
 
 const screen = Dimensions.get('screen');
 
-export default function AddTodo(){
+const UpdateTodo = ({route}) =>{
     const {t} = useTranslation();
     const navigation = useNavigation();
     const dispatch= useDispatch();
+    const user= useSelector((state: any) => state.user)
+    const todos= useSelector((state: any) => state.todo)
+
+    const todo= useMemo(() =>{
+        //console.log(todos.todos)
+        let list = todos.todos.filter((item: any) => {
+            return item?.id?.toString() === route?.params?.id?.toString()})
+            return list?.length ? list[0]: null;
+    }, [todos])
+    
+
+    // console.log(todo);
+    //console.log(todos.todos[0])
+
     const {
         control, 
         handleSubmit,
         formState: {errors},
-    } = useForm();
+    } = useForm({
+        defaultValues: {
+            title: todo.title,
+            description: todo.description
+        }
+    });
 
-    const user= useSelector((state) => state.user)
-    const todos= useSelector((state) => state.todo)
-    
-    const onAddTodoPressed = async(data) =>{
-        await dispatch(addTodoAction(user.user[0].id, data.title, data.description));
-        
+    const onUpdateTodoPressed = async(data) =>{
+        //console.log(route.params.id, data.title, data.description);
+        await dispatch(updateTodoAction(route.params.id, user.user[0].id, data.title, data.description))
     }
 
     return (
@@ -40,7 +56,7 @@ export default function AddTodo(){
                     >
             <View style={styles.body}>
                 <View>
-                    <Text style={{color: 'white', fontWeight: 'bold', fontSize: 25, paddingBottom: 25}}>{t('Add New Todo')}:</Text>
+                    <Text style={styles.bodyText}>{t('Update Todo')}:</Text>
                     <CustomInput
                         name='title'
                         placeholder={t('Tittle')}
@@ -48,22 +64,24 @@ export default function AddTodo(){
                         rules={{
                             required: 'Title is required'
                         }}
+                        value='kn'
                         />
                     <CustomInput
                         name='description'
                         placeholder={t('Description')}
                         control={control}
+                        value='ln'
                         />
                 </View>
                 <View>
                     <TouchableOpacity
-                        onPress={handleSubmit(onAddTodoPressed)}
+                        onPress={handleSubmit(onUpdateTodoPressed)}
                         >
                     <LinearGradient
                         colors={['#ff608b','#fe7591','#ff9199']}
                         style={styles.button}
                         >
-                        <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>{t('Add')}</Text>
+                        <Text style={styles.btnText}>{t('Update')}</Text>
                     </LinearGradient>
                     </TouchableOpacity>
                 </View>
@@ -73,6 +91,8 @@ export default function AddTodo(){
         </TouchableWithoutFeedback>
     );
 }
+
+export default UpdateTodo;
 
 const styles= StyleSheet.create({
     container:{
@@ -103,5 +123,16 @@ const styles= StyleSheet.create({
         backgroundColor: '#ff4f9e',
         marginVertical: 25,
     },
+    btnText:{
+        color: 'white', 
+        fontWeight: 'bold', 
+        fontSize: 18
+    },
+    bodyText:{
+        color: 'white', 
+        fontWeight: 'bold', 
+        fontSize: 25, 
+        paddingBottom: 25
+    }
     
 });

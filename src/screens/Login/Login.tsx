@@ -63,9 +63,24 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         marginRight: 25
     },
+    headerText:{
+        color: 'white', 
+        fontWeight: 'bold', 
+        fontSize: 25 
+    },
+    headerTextColor:{
+        color: '#3f7ad9'
+    },
+    
     body: {
         paddingVertical: 35,
         paddingHorizontal: 35,
+    },
+    bodyText:{
+        color: 'white', 
+        fontWeight: 'bold', 
+        fontSize: 25, 
+        paddingBottom: 15 
     },
     textInput: {
         borderRadius: 50,
@@ -139,11 +154,11 @@ function Login() {
 
     const dispatch = useDispatch();
 
-    const changeLanguage =(lang) =>{
+    const changeLanguage =(lang: string) =>{
         i18n.changeLanguage(lang)
       }
 
-    const onSignInPressed = async data => {
+    const onSignInPressed = async(data) => {
         await dispatch(loginAction(data.email, data.password));
         onDisplayNotification();
         //console.log(data.email)
@@ -215,8 +230,8 @@ function Login() {
                     <View style={styles.header}>
                         <Image style={styles.header_image} source={require('../../assets/images/upnow.png')} />
                         <View>
-                            <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 25 }}>UpNow</Text>
-                            <Text style={{ color: '#3f7ad9' }}>{t('Digital Hypnoterapy')}</Text>
+                            <Text style={styles.headerText}>UpNow</Text>
+                            <Text style={styles.headerTextColor}>{t('Digital Hypnoterapy')}</Text>
                         </View>
                         {/* <Dropdown
                             style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
@@ -239,7 +254,7 @@ function Login() {
                     </View>
 
                     <View style={styles.body}>
-                        <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 25, paddingBottom: 15 }}>Log In</Text>
+                        <Text style={styles.bodyText}>Log In</Text>
                         <CustomInput
                             name='email'
                             icon_name='email'
@@ -252,8 +267,7 @@ function Login() {
                                     value: emailRegex,
                                     message: t('Incorrect email address')
                                 }
-                            }}
-                        //onChange={(val) => setEmail(val)}
+                            }} secureTextEntry={undefined} 
                         />
 
                         <CustomInput

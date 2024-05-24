@@ -23,8 +23,8 @@ const Welcome = ({navigation}) => {
     const [deletingTodoId, setDeletingTodoId] = useState(null);
     const isFocused = useIsFocused();
 
-    const user= useSelector((state) => state.user)
-    const todos= useSelector((state) => state.todo)
+    const user= useSelector((state: any) => state.user)
+    const todos= useSelector((state: any) => state.todo)
     
     const onload = async()=>{
         await dispatch(getTodosAction(user.user[0].id));
@@ -40,7 +40,7 @@ const Welcome = ({navigation}) => {
     }, [todos.todos])
 
 
-    const pressHandler = (id) =>{
+    const pressHandler = (id: any) =>{
         navigation.navigate('UpdateTodo', {id})
     }
 
@@ -80,7 +80,7 @@ const Welcome = ({navigation}) => {
                     </View>
                 </View>
                 <View style={{alignItems: 'center'}}>
-                <Text style={{fontSize: 30, color: 'white'}}>{t('Todo List')}</Text>
+                <Text style={styles.bodyText}>{t('Todo List')}</Text>
             </View>
             <View style={styles.list}>
                 <FlatList
@@ -106,10 +106,10 @@ const Welcome = ({navigation}) => {
             <AwesomeAlert
                 show={showAlert}  
                 title={t('Delete Todo')} 
-                titleStyle={{fontSize: 28, color: 'red'}}
+                titleStyle={styles.alertTitle}
                 
                 message={t('Are you want to delete this todo ?')}
-                messageStyle={{color: 'black', fontSize: 22}}
+                messageStyle={styles.alertMessage}
                 
                 showCancelButton={true}
                 cancelText={t('Cancel')}
@@ -182,14 +182,26 @@ const styles= StyleSheet.create({
     },
     list:{
         marginTop: 20,
-      },
-      addBtn:{
-          position: 'absolute',
-          bottom: 15,
-          right: 15
-      },
-      flatList:{
-          height: screen.height * 0.7
-      }   
+    },
+    addBtn:{
+        position: 'absolute',
+        bottom: 15,
+        right: 15
+    },
+    flatList:{
+        height: screen.height * 0.7
+    },
+    bodyText:{
+        fontSize: 30,
+        color: 'white'
+    },
+    alertTitle:{
+        fontSize: 28,
+        color: 'red'
+    },
+    alertMessage:{
+        color: 'black',
+        fontSize: 22
+    }
     
 });

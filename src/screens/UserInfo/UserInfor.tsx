@@ -12,7 +12,7 @@ const screen = Dimensions.get('screen');
 
 export default function UserInfor(){
     const navigation = useNavigation()
-    const user= useSelector((state)=> state.user)
+    const user= useSelector((state: any)=> state.user)
     const fName= user.user?.[0]?.fName ?? 'min';
     const lName= user.user?.[0]?.lName ?? 'Ad'
     const [image, setImage] = useState('');
@@ -65,7 +65,6 @@ export default function UserInfor(){
                 colors={['#833ab4','#fd1d1d','#fcb045']}
                 >
             </LinearGradient>
-            <StatusBar style='light'/>
             <View style={styles.body}>
                 <View style={styles.title}>
                     {/* {image!= '' ?  */}
@@ -74,25 +73,25 @@ export default function UserInfor(){
                     } */}
                     <Image style={styles.profile_image} source={require('../../assets/images/Valar,VaalmonicanHallowHymn.png')}/> 
                     <TouchableOpacity style={{paddingVertical: 10}} onPress={() => requestCameraPermission()}>
-                        <Text style={{fontSize: 15, color: 'red'}}>{t('Change profile photo')}</Text>
+                        <Text style={styles.changeBtn}>{t('Change profile photo')}</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.menuList}>
                     <View style={styles.item}>
-                        <Text style={{color: 'white', flex: 1}}>{t('First Name')}</Text>
-                        <Text style={{color: 'white', flex: 2}}>{fName}</Text>
+                        <Text style={styles.showTitle}>{t('First Name')}</Text>
+                        <Text style={styles.text}>{fName}</Text>
                     </View>
                     <View style={styles.item}>
-                        <Text style={{color: 'white', flex: 1}}>{t('Last Name')}</Text>
-                        <Text style={{color: 'white', flex: 2}}>{lName}</Text>
+                        <Text style={styles.showTitle}>{t('Last Name')}</Text>
+                        <Text style={styles.text}>{lName}</Text>
                     </View>
                     <View style={styles.item}>
-                        <Text style={{color: 'white', flex: 1}}>{t('Email')}</Text>
-                        <Text style={{color: 'white', flex: 2}}>{user.user[0].email}</Text>
+                        <Text style={styles.showTitle}>{t('Email')}</Text>
+                        <Text style={styles.text}>{user.user[0].email}</Text>
                     </View>
                     <View style={styles.item}>
-                        <Text style={{color: 'white', flex: 1}}>{t('Password')}</Text>
-                        <Text style={{color: 'white', flex: 2}}>{'*'.repeat(user.user[0].password.length)}</Text>
+                        <Text style={styles.showTitle}>{t('Password')}</Text>
+                        <Text style={styles.text}>{'*'.repeat(user.user[0].password.length)}</Text>
                     </View>
                 </View>
             </View>
@@ -163,5 +162,17 @@ const styles= StyleSheet.create({
         borderRadius: 4,
         backgroundColor: '#00000040',
         marginBottom: 10,
+    },
+    showTitle:{
+        color: 'white',
+        flex: 1
+    },
+    text:{
+        color: 'white',
+        flex: 2
+    },
+    changeBtn:{
+        fontSize: 15,
+        color: 'red'
     }
 });

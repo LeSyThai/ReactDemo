@@ -56,38 +56,35 @@ export default function Signup(){
                 <View style={styles.body}>
                     <View>
 
-                        <Text style={{color: 'white', fontWeight: 'bold', fontSize: 25, paddingBottom: 25}}>Register</Text>
+                        <Text style={styles.bodyText}>Register</Text>
                         <CustomInput
-                            name= 'fName'
-                            icon_name='account-circle'
-                            placeholder= {t('First Name')}
-                            control={control}
-                            rules={{
-                                required: t('First name is required')
-                            }}
-                            />
+                                name='fName'
+                                icon_name='account-circle'
+                                placeholder={t('First Name')}
+                                control={control}
+                                rules={{
+                                    required: t('First name is required')
+                                }} secureTextEntry={undefined}                            />
                         <CustomInput
-                            name= 'lName'
-                            icon_name='account-circle'
-                            placeholder= {t('Last Name')}
-                            control={control}
-                            rules={{
-                                required: t('Last name is required')
-                            }}
-                            />
+                                name='lName'
+                                icon_name='account-circle'
+                                placeholder={t('Last Name')}
+                                control={control}
+                                rules={{
+                                    required: t('Last name is required')
+                                }} secureTextEntry={undefined}                            />
                         <CustomInput 
-                            name='email'
-                            icon_name='email'
-                            placeholder= {t('Email')}
-                            control={control}
-                            rules={{
-                                required: t('Email is required'), 
-                                pattern: {
-                                    value: emailRegex, 
-                                    message: t('Incorrect email address')
-                                }
-                            }}
-                            />
+                                name='email'
+                                icon_name='email'
+                                placeholder={t('Email')}
+                                control={control}
+                                rules={{
+                                    required: t('Email is required'),
+                                    pattern: {
+                                        value: emailRegex,
+                                        message: t('Incorrect email address')
+                                    }
+                                }} secureTextEntry={undefined}                            />
 
                         <CustomInput
                             name='password'
@@ -129,17 +126,17 @@ export default function Signup(){
                                             <Text style={{color: 'white'}}>
                                                 {t('by clicking')} 
                                             <TouchableOpacity>
-                                                <Text style={{color: '#ff0000', marginBottom: -5}}> {t('Term & Conditions')} </Text>
+                                                <Text style={styles.linkText}> {t('Term & Conditions')} </Text>
                                             </TouchableOpacity>
                                             {t('and')}
                                             <TouchableOpacity>
-                                                <Text style={{color: '#ff0000',  marginBottom: -5}}> {t('Privacy policy')}</Text>
+                                                <Text style={styles.linkText}> {t('Privacy policy')}</Text>
                                             </TouchableOpacity>
                                             </Text>
                                         </View>
                                     </View>
                                     {error && (
-                                        <Text style={{color: 'red', alignSelf: 'stretch'}}>
+                                        <Text style={styles.errorMessage}>
                                             {error.message || 'Error'}
                                         </Text>
                                     )}
@@ -160,15 +157,15 @@ export default function Signup(){
                                 colors={['#ff608b','#fe7591','#ff9199']}
                                 style={styles.button}
                                 >
-                                <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>{t('Register')}</Text>
+                                <Text style={styles.btnText}>{t('Register')}</Text>
                             </LinearGradient>
                         </TouchableOpacity>
 
 
-                        <View style={{alignItems: 'center', flexDirection: 'row', justifyContent: 'space-evenly', paddingHorizontal: 50}}>
+                        <View style={styles.navibox}>
                             <Text style={{color: 'white'}}>{t('Already have an account?')} </Text>
                             <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-                                <Text style={{color: '#ff4f9e', fontWeight: 'bold'}}>{t('Log In')}</Text>
+                                <Text style={styles.loginText}>{t('Log In')}</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -229,6 +226,36 @@ const styles= StyleSheet.create({
     checkbox:{
         margin: 8,
         borderRadius: 5,
+    },
+    bodyText:{
+        color: 'white', 
+        fontWeight: 'bold', 
+        fontSize: 25, 
+        paddingBottom: 25
+    },
+    linkText:{
+        color: '#ff0000', 
+        marginBottom: -5
+    },
+    errorMessage:{
+        color: 'red', 
+        alignSelf: 'stretch'
+    },
+    btnText:{
+        color: 'white', 
+        fontWeight: 'bold', 
+        fontSize: 18       
+    },
+    navibox:{
+        alignItems: 'center', 
+        flexDirection: 'row', 
+        justifyContent: 'space-evenly', 
+        paddingHorizontal: 50
+    },
+    loginText:{
+        color: '#ff4f9e', 
+        fontWeight: 'bold'
     }
+
     
 });

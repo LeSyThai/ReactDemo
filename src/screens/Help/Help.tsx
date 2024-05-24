@@ -13,7 +13,7 @@ import DrawerSceneWrapper from '../../components/drawer_navigation/DrawerSceneWr
 
 const screen = Dimensions.get('screen');
 
-const Invite= ({navigation})=> {
+const Help= ({navigation})=> {
   const {openDrawer} = navigation;
 
   return (
@@ -28,8 +28,8 @@ const Invite= ({navigation})=> {
             <TouchableOpacity onPress={openDrawer}>
             <Ionicons name="arrow-back" size={24} color="white" />
             </TouchableOpacity>
-            <View style={{position: 'absolute', left: screen.width*0.3, right: screen.width*0.3, alignItems: 'center'}}>
-            <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>Invite friends</Text>
+            <View style={styles.headerTitle}>
+            <Text style={styles.headerText}>Help & Support</Text>
             </View>
         </View>
     </View>
@@ -37,7 +37,7 @@ const Invite= ({navigation})=> {
   );
 }
 
-export default Invite;
+export default Help;
 
 const styles = StyleSheet.create({
   container: {
@@ -63,4 +63,15 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     height: screen.height * 0.07,
   },
+  headerTitle:{
+    position: 'absolute', 
+    left: screen.width*0.3, 
+    right: screen.width*0.3, 
+    alignItems: 'center'
+  },
+  headerText:{
+    color: 'white', 
+    fontSize: 20, 
+    fontWeight: 'bold'
+  }
 });

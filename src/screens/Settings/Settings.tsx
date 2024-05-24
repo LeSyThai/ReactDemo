@@ -34,7 +34,7 @@ const languages = [
 const Settings = ({navigation}) => {
   const {openDrawer}= navigation;
   const dispatch = useDispatch();
-  const user = useSelector(state => state.user);
+  const user = useSelector((state: any) => state.user);
   const [showAlert, setShowAlert] = useState(false);
   const {t, i18n} = useTranslation();
   const [value, setValue] = useState(null);
@@ -45,7 +45,7 @@ const Settings = ({navigation}) => {
   };
   // console.log(user)
 
-  const changeLanguage =(lang) =>{
+  const changeLanguage =(lang: any) =>{
     i18n.changeLanguage(lang)
   }
 
@@ -66,8 +66,8 @@ const Settings = ({navigation}) => {
             <TouchableOpacity onPress={openDrawer}>
             <Ionicons name="arrow-back" size={24} color="white" />
             </TouchableOpacity>
-            <View style={{position: 'absolute', left: screen.width*0.3, right: screen.width*0.3, alignItems: 'center'}}>
-            <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>{t('Settings')}</Text>
+            <View style={styles.headerTitle}>
+            <Text style={styles.headerText}>{t('Settings')}</Text>
             </View>
         </View>
       <View style={styles.body}>
@@ -228,5 +228,16 @@ const styles = StyleSheet.create({
   selectedTextStyle: {
     fontSize: 16,
   },
+  headerTitle:{
+    position: 'absolute', 
+    left: screen.width*0.3, 
+    right: screen.width*0.3, 
+    alignItems: 'center'
+  },
+  headerText:{
+    color: 'white', 
+    fontSize: 20, 
+    fontWeight: 'bold'
+  }
 });
 

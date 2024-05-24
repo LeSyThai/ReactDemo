@@ -29,8 +29,8 @@ const Send= ({navigation})=> {
             <TouchableOpacity onPress={openDrawer}>
             <Ionicons name="arrow-back" size={24} color="white" />
             </TouchableOpacity>
-            <View style={{position: 'absolute', left: screen.width*0.1, right: screen.width*0.1, alignItems: 'center'}}>
-            <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>Send a testimanial</Text>
+            <View style={styles.headerTitle}>
+            <Text style={styles.headerText}>Send a testimanial</Text>
             </View>
         </View>
     </View>
@@ -64,4 +64,15 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     height: screen.height * 0.07,
   },
+  headerTitle:{
+    position: 'absolute', 
+    left: screen.width*0.3, 
+    right: screen.width*0.3, 
+    alignItems: 'center'
+  },
+  headerText:{
+    color: 'white', 
+    fontSize: 20, 
+    fontWeight: 'bold'
+  }
 });

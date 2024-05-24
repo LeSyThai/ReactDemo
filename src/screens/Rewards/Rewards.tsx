@@ -35,28 +35,22 @@ const Rewards= ({navigation}) => {
         <View>
           <LinearGradient
             colors={['#ff608b', '#fe7591', '#ff9199']}
-            style={{
-              flexDirection: 'row',
-              padding: 8,
-              borderRadius: 50,
-              backgroundColor: '#ff4f9e',
-              alignItems: 'center',
-            }}>
+            style={styles.pointView}>
             <Image
-              style={{width: 20, height: 20}}
+              style={styles.image}
               source={require('../../assets/images/reward.png')}
               />
-            <Text style={{color: 'white', fontWeight: 'bold'}}>9 {t('Points')}</Text>
+            <Text style={styles.point}>9 {t('Points')}</Text>
           </LinearGradient>
         </View>
       </View>
       <View style={styles.body}>
         <View style={styles.title}>
           <FontAwesome6 name="trophy" size={100} color="white" />
-          <Text style={{fontSize: 25, fontWeight: 'bold', color: 'white'}}>
+          <Text style={styles.screenTitle}>
           {t('Rewards')}
           </Text>
-          <Text style={{fontSize: 15, color: 'white'}}>
+          <Text style={styles.screenDescrip}>
             {t('Collect points')}
           </Text>
         </View>
@@ -68,9 +62,9 @@ const Rewards= ({navigation}) => {
                 {t('Achieved')} <AntDesign name="check" size={17} color="grey" />
               </Text>
             </View>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <View style={styles.rowLine}>
               <Image
-                style={{width: 20, height: 20}}
+                style={styles.rowImage}
                 source={require('../../assets/images/reward.png')}
                 />
               <Text style={{color: 'red'}}> 1</Text>
@@ -85,9 +79,9 @@ const Rewards= ({navigation}) => {
                 {t('Achieved')} <AntDesign name="check" size={17} color="grey" />
               </Text>
             </View>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <View style={styles.rowLine}>
               <Image
-                style={{width: 20, height: 20}}
+                style={styles.rowImage}
                 source={require('../../assets/images/reward.png')}
                 />
               <Text style={{color: 'red'}}> 7</Text>
@@ -98,7 +92,7 @@ const Rewards= ({navigation}) => {
               <Text style={{color: 'white'}}>
                 {t('Listen for the first 28 consecutive days')}
               </Text>
-              <View style={{flexDirection: 'row', alignItems: 'center'}}>
+              <View style={styles.rowLine}>
                 <Text style={{color: '#777899', marginRight: 10}}>14/28</Text>
                 <Progress.Bar
                   progress={0.5}
@@ -108,9 +102,9 @@ const Rewards= ({navigation}) => {
                 />
               </View>
             </View>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <View style={styles.rowLine}>
               <Image
-                style={{width: 20, height: 20}}
+                style={styles.rowImage}
                 source={require('../../assets/images/reward.png')}
                 />
               <Text style={{color: 'red'}}> 28</Text>
@@ -120,9 +114,9 @@ const Rewards= ({navigation}) => {
             <View>
               <Text style={{color: 'white'}}>{t('Write one review')}</Text>
             </View>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <View style={styles.rowLine}>
               <Image
-                style={{width: 20, height: 20}}
+                style={styles.rowImage}
                 source={require('../../assets/images/reward.png')}
                 />
               <Text style={{color: 'red'}}> 50</Text>
@@ -134,9 +128,9 @@ const Rewards= ({navigation}) => {
                 {t('Refer a friend or accept a referral')}
               </Text>
             </View>
-            <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <View style={styles.rowLine}>
               <Image
-                style={{width: 20, height: 20}}
+                style={styles.rowImage}
                 source={require('../../assets/images/reward.png')}
                 />
               <Text style={{color: 'red'}}> 10</Text>
@@ -147,13 +141,7 @@ const Rewards= ({navigation}) => {
       <TouchableOpacity>
         <LinearGradient
           colors={['#ff608b', '#fe7591', '#ff9199']}
-          style={{
-            marginHorizontal: 20,
-            padding: 15,
-            borderRadius: 25,
-            backgroundColor: '#ff4f9e',
-            alignItems: 'center',
-          }}>
+          style={styles.btn}>
           <Text style={{color: 'white', fontWeight: 'bold'}}>
             {t('100 points - 5% off| 150 points - 10% off')}
           </Text>
@@ -223,4 +211,43 @@ const styles = StyleSheet.create({
     backgroundColor: '#0f2c4f',
     marginVertical: 5,
   },
+  point:{
+    color: 'white', 
+    fontWeight: 'bold'
+  },
+  image:{
+    width: 20, 
+    height: 20
+  },
+  pointView:{
+    flexDirection: 'row',
+    padding: 8,
+    borderRadius: 50,
+    backgroundColor: '#ff4f9e',
+    alignItems: 'center',
+  },
+  screenTitle:{
+    fontSize: 25, 
+    fontWeight: 'bold', 
+    color: 'white'
+  },
+  screenDescrip:{
+    fontSize: 15, 
+    color: 'white'
+  },
+  rowLine:{
+    flexDirection: 'row', 
+    alignItems: 'center'
+  },
+  rowImage:{
+    width: 20, 
+    height: 20
+  },
+  btn:{
+    marginHorizontal: 20,
+    padding: 15,
+    borderRadius: 25,
+    backgroundColor: '#ff4f9e',
+    alignItems: 'center',
+  }
 });
