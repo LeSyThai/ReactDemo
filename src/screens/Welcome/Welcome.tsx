@@ -44,7 +44,7 @@ const Welcome = ({navigation}) => {
         navigation.navigate('UpdateTodo', {id})
     }
 
-    const handleConfirmDelete = async() => {
+    const handleConfirmDelete = async(deletingTodoId: null) => {
         await dispatch(deleteTodoAction(deletingTodoId));
         setShowAlert(false);
       };
