@@ -129,13 +129,34 @@ const styles = StyleSheet.create({
         borderWidth: 0.5,
         borderRadius: 8,
         paddingHorizontal: 8,
-      },
-      placeholderStyle: {
+    },
+        placeholderStyle: {
         fontSize: 16,
-      },
-      selectedTextStyle: {
+    },
+        selectedTextStyle: {
         fontSize: 16,
-      },
+    },
+        flexend:{ 
+        alignItems: 'flex-end' 
+    },
+    endText:{
+        right: 0, 
+        color: 'white' 
+    },
+    signUpBox:{ 
+        alignItems: 'center', 
+        flexDirection: 'row', 
+        justifyContent: 'space-evenly', 
+        paddingHorizontal: 50 
+    },
+    white:{ color: 'white' },
+    signUpText:{ color: '#ff4f9e', fontWeight: 'bold' },
+    separatorBox: { 
+        alignItems: 'center', 
+        flexDirection: 'row', 
+        justifyContent: 'space-evenly', 
+        paddingVertical: screen.height * 0.05 
+    },
 });
 
 
@@ -291,9 +312,9 @@ function Login() {
                         //onChange={(val) => setPassword(val)}
                         />
 
-                        <View style={{ alignItems: 'flex-end' }}>
+                        <View style={styles.flexend}>
                             <TouchableOpacity>
-                                <Text style={{ right: 0, color: 'white' }}>{t('Forget password')} ?</Text>
+                                <Text style={styles.endText}>{t('Forget password')} ?</Text>
                             </TouchableOpacity>
                         </View>
                         <TouchableOpacity
@@ -304,18 +325,18 @@ function Login() {
                                 colors={['#ff608b', '#fe7591', '#ff9199']}
                                 style={styles.button}
                             >
-                                <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 18 }}>{t('Log In')}</Text>
+                                <Text style={styles.btnText}>{t('Log In')}</Text>
                             </LinearGradient>
                         </TouchableOpacity>
-                        <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'space-evenly', paddingHorizontal: 50 }}>
-                            <Text style={{ color: 'white' }}>{t('Don\'t have an account?')}</Text>
+                        <View style={styles.signUpBox}>
+                            <Text style={styles.white}>{t('Don\'t have an account?')}</Text>
                             <TouchableOpacity
                                 onPress={() => navigation.navigate('Signup')}
                             >
-                                <Text style={{ color: '#ff4f9e', fontWeight: 'bold' }}>{t('Sign Up')}</Text>
+                                <Text style={styles.signUpText}>{t('Sign Up')}</Text>
                             </TouchableOpacity>
                         </View>
-                        <View style={{ alignItems: 'center', flexDirection: 'row', justifyContent: 'space-evenly', paddingVertical: screen.height * 0.05 }}>
+                        <View style={styles.separatorBox}>
                             <View style={styles.separator} />
                             <Text style={{ color: 'white' }}>{t('Or Log in with')}</Text>
                             <View style={styles.separator} />

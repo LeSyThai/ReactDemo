@@ -57,8 +57,8 @@ const Rewards= ({navigation}) => {
         <View style={styles.menuList}>
           <View style={styles.item}>
             <View>
-              <Text style={{color: 'white'}}>{t('Listen-1 day')}</Text>
-              <Text style={{color: '#777899'}}>
+              <Text style={styles.white}>{t('Listen-1 day')}</Text>
+              <Text style={styles.grey}>
                 {t('Achieved')} <AntDesign name="check" size={17} color="grey" />
               </Text>
             </View>
@@ -67,15 +67,15 @@ const Rewards= ({navigation}) => {
                 style={styles.rowImage}
                 source={require('../../assets/images/reward.png')}
                 />
-              <Text style={{color: 'red'}}> 1</Text>
+              <Text style={styles.red}> 1</Text>
             </View>
           </View>
           <View style={styles.item}>
             <View>
-              <Text style={{color: 'white'}}>
+              <Text style={styles.white}>
                 {t('Listen for the first 7 consecutive days')}
               </Text>
-              <Text style={{color: '#777899'}}>
+              <Text style={styles.grey}>
                 {t('Achieved')} <AntDesign name="check" size={17} color="grey" />
               </Text>
             </View>
@@ -84,16 +84,16 @@ const Rewards= ({navigation}) => {
                 style={styles.rowImage}
                 source={require('../../assets/images/reward.png')}
                 />
-              <Text style={{color: 'red'}}> 7</Text>
+              <Text style={styles.red}> 7</Text>
             </View>
           </View>
           <View style={styles.item}>
             <View>
-              <Text style={{color: 'white'}}>
+              <Text style={styles.white}>
                 {t('Listen for the first 28 consecutive days')}
               </Text>
               <View style={styles.rowLine}>
-                <Text style={{color: '#777899', marginRight: 10}}>14/28</Text>
+                <Text style={[styles.grey, {marginRight: 10}]}>14/28</Text>
                 <Progress.Bar
                   progress={0.5}
                   width={125}
@@ -107,24 +107,24 @@ const Rewards= ({navigation}) => {
                 style={styles.rowImage}
                 source={require('../../assets/images/reward.png')}
                 />
-              <Text style={{color: 'red'}}> 28</Text>
+              <Text style={styles.red}> 28</Text>
             </View>
           </View>
           <View style={styles.item}>
             <View>
-              <Text style={{color: 'white'}}>{t('Write one review')}</Text>
+              <Text style={styles.white}>{t('Write one review')}</Text>
             </View>
             <View style={styles.rowLine}>
               <Image
                 style={styles.rowImage}
                 source={require('../../assets/images/reward.png')}
                 />
-              <Text style={{color: 'red'}}> 50</Text>
+              <Text style={styles.red}> 50</Text>
             </View>
           </View>
           <View style={styles.item}>
             <View>
-              <Text style={{color: 'white'}}>
+              <Text style={styles.white}>
                 {t('Refer a friend or accept a referral')}
               </Text>
             </View>
@@ -133,7 +133,7 @@ const Rewards= ({navigation}) => {
                 style={styles.rowImage}
                 source={require('../../assets/images/reward.png')}
                 />
-              <Text style={{color: 'red'}}> 10</Text>
+              <Text style={styles.red}> 10</Text>
             </View>
           </View>
         </View>
@@ -249,5 +249,8 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     backgroundColor: '#ff4f9e',
     alignItems: 'center',
-  }
+  },
+  white:{color: 'white'},
+  grey: {color: '#777899'},
+  red: {color: 'red'}
 });

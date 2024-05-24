@@ -68,7 +68,7 @@ const Welcome = ({navigation}) => {
                     >
                 </LinearGradient>
                 <View style={styles.header}>
-                    <Text style={{color:'white'}}>{t('Welcome to Home Screen, ')}{userName}</Text>
+                    <Text style={styles.white}>{t('Welcome to Home Screen, ')}{userName}</Text>
                     <Button title={t('Log out')} onPress={handleLogout} />
                 </View>
                 <View style={styles.wrapper}>
@@ -79,7 +79,7 @@ const Welcome = ({navigation}) => {
                         <Text style={styles.searchTextPlaceHolder}>{t('Search Here')}</Text>
                     </View>
                 </View>
-                <View style={{alignItems: 'center'}}>
+                <View style={styles.center}>
                 <Text style={styles.bodyText}>{t('Todo List')}</Text>
             </View>
             <View style={styles.list}>
@@ -202,6 +202,12 @@ const styles= StyleSheet.create({
     alertMessage:{
         color: 'black',
         fontSize: 22
-    }
+    },
+    white:{
+        color: 'white',
+    },
+    center:{
+        alignItems: 'center'
+    },
     
 });

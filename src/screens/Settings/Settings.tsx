@@ -75,20 +75,20 @@ const Settings = ({navigation}) => {
           <TouchableOpacity
             style={styles.item}
             onPress={() => navigation.navigate('UserInfor')}>
-            <Text style={{color: 'white'}}>{t('User Info')}</Text>
+            <Text style={styles.white}>{t('User Info')}</Text>
             <FontAwesome6 name="greater-than" size={17} color="red" />
           </TouchableOpacity>
           <TouchableOpacity style={styles.item}>
-            <Text style={{color: 'white'}}>{t('My Subscriptions')}</Text>
+            <Text style={styles.white}>{t('My Subscriptions')}</Text>
             <FontAwesome6 name="greater-than" size={17} color="red" />
           </TouchableOpacity>
           <TouchableOpacity style={styles.item}>
-            <Text style={{color: 'white'}}>{t('Profile Tags')}</Text>
+            <Text style={styles.white}>{t('Profile Tags')}</Text>
             <FontAwesome6 name="greater-than" size={17} color="red" />
           </TouchableOpacity>
           <View style={styles.item}>
             <View>
-              <Text style={{color: 'white'}}>{t('Language')}</Text>
+              <Text style={styles.white}>{t('Language')}</Text>
             </View>
             {/* <TouchableNativeFeedback onPress={() =>{
               setOpenLanguagesList(!showLanguagesList)
@@ -127,25 +127,25 @@ const Settings = ({navigation}) => {
         </View>
         <View style={styles.bodypart}>
           <TouchableOpacity style={styles.item}>
-            <Text style={{color: 'white'}}>{t('Term & Conditions')}</Text>
+            <Text style={styles.white}>{t('Term & Conditions')}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.item}>
-            <Text style={{color: 'white'}}>{t('Privacy policy')}</Text>
+            <Text style={styles.white}>{t('Privacy policy')}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.item, {marginTop: 30}]}
             onPress={() => setShowAlert(!showAlert)}>
-            <Text style={{color: 'red'}}>{t('Delete account')}</Text>
+            <Text style={styles.red}>{t('Delete account')}</Text>
           </TouchableOpacity>
         </View>
       </View>
       <AwesomeAlert 
         show={showAlert}  
         title='Delete Account' 
-        titleStyle={{fontSize: 28, color: 'red'}}
+        titleStyle={styles.alertTitle}
         
         message='Are you want to delete this account ?'
-        messageStyle={{color: 'black', fontSize: 22}}
+        messageStyle={styles.alertMessage}
         
         showCancelButton={true}
         cancelText='Cancel'
@@ -238,6 +238,13 @@ const styles = StyleSheet.create({
     color: 'white', 
     fontSize: 20, 
     fontWeight: 'bold'
-  }
+  },
+  white:{
+    color: 'white'
+  },
+  red:{color: 'red'},
+  alertTitle:{fontSize: 28, color: 'red'},
+  alertMessage:
+  {color: 'black', fontSize: 22},
 });
 

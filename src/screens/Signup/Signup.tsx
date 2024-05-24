@@ -49,8 +49,8 @@ export default function Signup(){
                 <View style={styles.header}>
                     <Image style={styles.header_image} source={require('../../assets/images/upnow.png')}/>
                     <View>
-                        <Text style={{color: 'white', fontWeight: 'bold', fontSize: 25}}>UpNow</Text>
-                        <Text style={{color: '#3f7ad9'}}>{t('Digital Hypnoterapy')}</Text>
+                        <Text style={styles.headerText}>UpNow</Text>
+                        <Text style={styles.headerColor}>{t('Digital Hypnoterapy')}</Text>
                     </View>
                 </View>
                 <View style={styles.body}>
@@ -255,7 +255,14 @@ const styles= StyleSheet.create({
     loginText:{
         color: '#ff4f9e', 
         fontWeight: 'bold'
+    },
+    headerText:{
+        color: 'white', 
+        fontWeight: 'bold', 
+        fontSize: 25
+    },
+    headerColor:{
+        color: '#3f7ad9'
     }
-
     
 });
