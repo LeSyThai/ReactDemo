@@ -12,10 +12,12 @@ import Send from "../screens/Send/Send";
 import Video from "../screens/Video/Video";
 import Help from "../screens/Help/Help";
 import Disclaimer from "../screens/Disclaimer/Disclaimer";
+import { useTranslation } from "react-i18next";
 
 const Drawer= createDrawerNavigator();
 
 const DrawerNavigator= ()=>{
+    const {t} = useTranslation();
     const drawerIcon= ({focused, size}: {focused: any, size: any}, name: string) => {
         return (
             <Icon
@@ -54,65 +56,74 @@ const DrawerNavigator= ()=>{
             }}
         >
             <Drawer.Screen
-                name="Welcome"
+                name='Welcome'
                 component={Welcome}
                 options={{
+                    drawerLabel: t('Welcome'),
                     drawerIcon: options => drawerIcon(options, 'home-outline'),
                 }}
             />
             <Drawer.Screen
-                name="Remider"
+                name='Reminder'
                 component={Reminder}
                 options={{
+                    drawerLabel: t('Reminder'),
                     drawerIcon: options => drawerIcon(options, 'bell-outline'),
                 }}
             />
             <Drawer.Screen
-                name="Invite your friends"
+                name='Invite your friends'
                 component={Invite}
                 options={{
+                    drawerLabel: t('Invite your friends'),
                     drawerIcon: options => drawerIcon(options, 'account-circle-outline'),
                 }}
             />
             <Drawer.Screen
-                name="Send a testimanial"
+                name='Send a testimanial'
                 component={Send}
                 options={{
+                    drawerLabel: t('Send a testimanial'),
                     drawerIcon: options => drawerIcon(options, 'email-outline'),
                 }}
             />
             <Drawer.Screen
-                name="Welcome video"
+                name='Welcome video'
                 component={Video}
                 options={{
+                    drawerLabel: t('Welcome video'),
                     drawerIcon: options => drawerIcon(options, 'youtube-tv'),
                 }}
             />
             <Drawer.Screen
-                name="Rewards"
+                name='Rewards'
                 component={Rewards}
                 options={{
+                    drawerLabel: t('Rewards'),
                     drawerIcon: options => drawerIcon(options, 'trophy-outline'),
                 }}
             />
             <Drawer.Screen
-                name="Help & Support"
+                name='Help & Support'
                 component={Help}
                 options={{
+                    drawerLabel: t('Help & Support'),
                     drawerIcon: options => drawerIcon(options, 'help-circle-outline'),
                 }}
             />
             <Drawer.Screen
-                name="Settings"
+                name='Settings'
                 component={Settings}
                 options={{
+                    drawerLabel: t('Settings'),
                     drawerIcon: options => drawerIcon(options, 'cog-outline'),
                 }}
             />
             <Drawer.Screen
-                name="Disclaimer"
+                name='Disclaimer'
                 component={Disclaimer}
                 options={{
+                    drawerLabel: t('Disclaimer'),
                     drawerIcon: options => drawerIcon(options, 'alert-outline'),
                 }}
             />

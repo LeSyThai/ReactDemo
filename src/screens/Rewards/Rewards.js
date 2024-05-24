@@ -14,10 +14,12 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import * as Progress from 'react-native-progress';
 import DrawerSceneWrapper from '../../components/drawer_navigation/DrawerSceneWrappers';
+import { useTranslation } from 'react-i18next';
 
 const screen = Dimensions.get('screen');
 
 const Rewards= ({navigation}) => {
+  const {t} = useTranslation()
   const {openDrawer} = navigation;
   return (
     <DrawerSceneWrapper>
@@ -44,7 +46,7 @@ const Rewards= ({navigation}) => {
               style={{width: 20, height: 20}}
               source={require('../../assets/images/reward.png')}
               />
-            <Text style={{color: 'white', fontWeight: 'bold'}}>9 Points</Text>
+            <Text style={{color: 'white', fontWeight: 'bold'}}>9 {t('Points')}</Text>
           </LinearGradient>
         </View>
       </View>
@@ -52,18 +54,18 @@ const Rewards= ({navigation}) => {
         <View style={styles.title}>
           <FontAwesome6 name="trophy" size={100} color="white" />
           <Text style={{fontSize: 25, fontWeight: 'bold', color: 'white'}}>
-            Rewards
+          {t('Rewards')}
           </Text>
           <Text style={{fontSize: 15, color: 'white'}}>
-            Collect points and get savings for the next month
+            {t('Collect points')}
           </Text>
         </View>
         <View style={styles.menuList}>
           <View style={styles.item}>
             <View>
-              <Text style={{color: 'white'}}>Listen - 1 day</Text>
+              <Text style={{color: 'white'}}>{t('Listen-1 day')}</Text>
               <Text style={{color: '#777899'}}>
-                Achieved <AntDesign name="check" size={17} color="grey" />
+                {t('Achieved')} <AntDesign name="check" size={17} color="grey" />
               </Text>
             </View>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -77,10 +79,10 @@ const Rewards= ({navigation}) => {
           <View style={styles.item}>
             <View>
               <Text style={{color: 'white'}}>
-                Listen for the first 7 consecutive days
+                {t('Listen for the first 7 consecutive days')}
               </Text>
               <Text style={{color: '#777899'}}>
-                Achieved <AntDesign name="check" size={17} color="grey" />
+                {t('Achieved')} <AntDesign name="check" size={17} color="grey" />
               </Text>
             </View>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -94,7 +96,7 @@ const Rewards= ({navigation}) => {
           <View style={styles.item}>
             <View>
               <Text style={{color: 'white'}}>
-                Listen for the first 28 consecutive days
+                {t('Listen for the first 28 consecutive days')}
               </Text>
               <View style={{flexDirection: 'row', alignItems: 'center'}}>
                 <Text style={{color: '#777899', marginRight: 10}}>14/28</Text>
@@ -116,7 +118,7 @@ const Rewards= ({navigation}) => {
           </View>
           <View style={styles.item}>
             <View>
-              <Text style={{color: 'white'}}>Write one review</Text>
+              <Text style={{color: 'white'}}>{t('Write one review')}</Text>
             </View>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
               <Image
@@ -129,7 +131,7 @@ const Rewards= ({navigation}) => {
           <View style={styles.item}>
             <View>
               <Text style={{color: 'white'}}>
-                Refer a friend or accept a referral
+                {t('Refer a friend or accept a referral')}
               </Text>
             </View>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -153,7 +155,7 @@ const Rewards= ({navigation}) => {
             alignItems: 'center',
           }}>
           <Text style={{color: 'white', fontWeight: 'bold'}}>
-            100 points - 5% off | 150 points - 10% off
+            {t('100 points - 5% off| 150 points - 10% off')}
           </Text>
         </LinearGradient>
       </TouchableOpacity>

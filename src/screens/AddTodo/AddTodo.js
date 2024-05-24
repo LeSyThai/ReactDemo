@@ -7,10 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useForm, Controller, useFormState} from 'react-hook-form';
 import CustomInput from "../../components/custom_input/CustomInput";
 import { addTodoAction } from "../../store/todoAction";
+import { useTranslation } from "react-i18next";
 
 const screen = Dimensions.get('screen');
 
 export default function AddTodo(){
+    const {t} = useTranslation();
     const navigation = useNavigation();
     const dispatch= useDispatch();
     const {
@@ -38,10 +40,10 @@ export default function AddTodo(){
                     >
             <View style={styles.body}>
                 <View>
-                    <Text style={{color: 'white', fontWeight: 'bold', fontSize: 25, paddingBottom: 25}}>Add New Todo:</Text>
+                    <Text style={{color: 'white', fontWeight: 'bold', fontSize: 25, paddingBottom: 25}}>{t('Add New Todo')}:</Text>
                     <CustomInput
                         name='title'
-                        placeholder='Todo Title'
+                        placeholder={t('Tittle')}
                         control={control}
                         rules={{
                             required: 'Title is required'
@@ -49,7 +51,7 @@ export default function AddTodo(){
                         />
                     <CustomInput
                         name='description'
-                        placeholder='Todo Description'
+                        placeholder={t('Description')}
                         control={control}
                         />
                 </View>
@@ -61,7 +63,7 @@ export default function AddTodo(){
                         colors={['#ff608b','#fe7591','#ff9199']}
                         style={styles.button}
                         >
-                        <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>Add</Text>
+                        <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>{t('Add')}</Text>
                     </LinearGradient>
                     </TouchableOpacity>
                 </View>

@@ -7,10 +7,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useForm} from 'react-hook-form';
 import CustomInput from "../../components/custom_input/CustomInput";
 import { updateTodoAction } from "../../store/todoAction";
+import { useTranslation } from "react-i18next";
 
 const screen = Dimensions.get('screen');
 
 const UpdateTodo = ({route}) =>{
+    const {t} = useTranslation();
     const navigation = useNavigation();
     const dispatch= useDispatch();
     const user= useSelector((state) => state.user)
@@ -54,10 +56,10 @@ const UpdateTodo = ({route}) =>{
                     >
             <View style={styles.body}>
                 <View>
-                    <Text style={{color: 'white', fontWeight: 'bold', fontSize: 25, paddingBottom: 25}}>Update Todo:</Text>
+                    <Text style={{color: 'white', fontWeight: 'bold', fontSize: 25, paddingBottom: 25}}>{t('Update Todo')}:</Text>
                     <CustomInput
                         name='title'
-                        placeholder='Todo Title'
+                        placeholder={t('Tittle')}
                         control={control}
                         rules={{
                             required: 'Title is required'
@@ -66,7 +68,7 @@ const UpdateTodo = ({route}) =>{
                         />
                     <CustomInput
                         name='description'
-                        placeholder='Todo Description'
+                        placeholder={t('Description')}
                         control={control}
                         value='ln'
                         />
@@ -79,7 +81,7 @@ const UpdateTodo = ({route}) =>{
                         colors={['#ff608b','#fe7591','#ff9199']}
                         style={styles.button}
                         >
-                        <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>Update</Text>
+                        <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>{t('Update')}</Text>
                     </LinearGradient>
                     </TouchableOpacity>
                 </View>

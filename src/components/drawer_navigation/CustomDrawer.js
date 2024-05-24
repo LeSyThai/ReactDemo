@@ -11,11 +11,12 @@ import Entypo from 'react-native-vector-icons/Entypo'
 import LinearGradient from 'react-native-linear-gradient';
 import { DrawerContentScrollView, DrawerItemList } from "@react-navigation/drawer";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const screen= Dimensions.get('screen');
 
 const CustomDrawer = (props) =>{
-
+    const {t} = useTranslation()
     const user= useSelector((state) => state.user);
     const fName= user.user?.[0]?.fName ?? 'min';
     const lName= user.user?.[0]?.lName ?? 'Ad'
@@ -48,7 +49,7 @@ const CustomDrawer = (props) =>{
                 <DrawerItemList {...props}/>
             </DrawerContentScrollView>
             <View style={{bottom: 20, flexDirection: 'row', marginHorizontal: 20}}>
-                <Text style={{color: 'white'}}>Powered by </Text>
+                <Text style={{color: 'white'}}>{t('Powered by ')} </Text>
                 <Text style={{color: 'white', fontWeight: 'bold'}}>UpNow</Text>
             </View>
 

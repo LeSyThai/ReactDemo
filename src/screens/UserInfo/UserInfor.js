@@ -4,6 +4,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
 import { launchCamera } from "react-native-image-picker";
+import { useTranslation } from "react-i18next";
 // import BottomSheet from 'reanimated-bottom-sheet';
 // import Animated from "react-native-reanimated";
 
@@ -15,6 +16,7 @@ export default function UserInfor(){
     const fName= user.user?.[0]?.fName ?? 'min';
     const lName= user.user?.[0]?.lName ?? 'Ad'
     const [image, setImage] = useState('');
+    const {t} = useTranslation();
 
     // bs= React.createRef();
     //fall= new Animated.Value(1);
@@ -72,24 +74,24 @@ export default function UserInfor(){
                     } */}
                     <Image style={styles.profile_image} source={require('../../assets/images/Valar,VaalmonicanHallowHymn.png')}/> 
                     <TouchableOpacity style={{paddingVertical: 10}} onPress={() => requestCameraPermission()}>
-                        <Text style={{fontSize: 15, color: 'red'}}>Change profile photo</Text>
+                        <Text style={{fontSize: 15, color: 'red'}}>{t('Change profile photo')}</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.menuList}>
                     <View style={styles.item}>
-                        <Text style={{color: 'white', flex: 1}}>First Name</Text>
+                        <Text style={{color: 'white', flex: 1}}>{t('First Name')}</Text>
                         <Text style={{color: 'white', flex: 2}}>{fName}</Text>
                     </View>
                     <View style={styles.item}>
-                        <Text style={{color: 'white', flex: 1}}>Last Name</Text>
+                        <Text style={{color: 'white', flex: 1}}>{t('Last Name')}</Text>
                         <Text style={{color: 'white', flex: 2}}>{lName}</Text>
                     </View>
                     <View style={styles.item}>
-                        <Text style={{color: 'white', flex: 1}}>Email</Text>
+                        <Text style={{color: 'white', flex: 1}}>{t('Email')}</Text>
                         <Text style={{color: 'white', flex: 2}}>{user.user[0].email}</Text>
                     </View>
                     <View style={styles.item}>
-                        <Text style={{color: 'white', flex: 1}}>Password</Text>
+                        <Text style={{color: 'white', flex: 1}}>{t('Password')}</Text>
                         <Text style={{color: 'white', flex: 2}}>{'*'.repeat(user.user[0].password.length)}</Text>
                     </View>
                 </View>

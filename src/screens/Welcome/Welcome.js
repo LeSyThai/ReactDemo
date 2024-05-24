@@ -11,10 +11,12 @@ import TodoItem from "../../components/todo_list/TodoItem";
 import { deleteTodoAction, getTodoByIdAction, getTodosAction } from "../../store/todoAction";
 import AwesomeAlert from "react-native-awesome-alerts";
 import DrawerSceneWrapper from "../../components/drawer_navigation/DrawerSceneWrappers";
+import { useTranslation } from "react-i18next";
 
 const screen = Dimensions.get('screen');
 
 const Welcome = ({navigation}) => {
+    const {t} = useTranslation();
     const {openDrawer}= navigation;
     const dispatch= useDispatch();
     const [showAlert, setShowAlert] = useState(false);
@@ -66,19 +68,19 @@ const Welcome = ({navigation}) => {
                     >
                 </LinearGradient>
                 <View style={styles.header}>
-                    <Text style={{color:'white'}}>Welcome to Home Screen, {userName}</Text>
-                    <Button title="Logout" onPress={handleLogout} />
+                    <Text style={{color:'white'}}>{t('Welcome to Home Screen, ')}{userName}</Text>
+                    <Button title={t('Log out')} onPress={handleLogout} />
                 </View>
                 <View style={styles.wrapper}>
                     <View style={styles.searchBar}>
                         <TouchableOpacity onPress={openDrawer}>
                         <Icon name="menu" size={20} color="#666" />
                         </TouchableOpacity>
-                        <Text style={styles.searchTextPlaceHolder}>Search Here</Text>
+                        <Text style={styles.searchTextPlaceHolder}>{t('Search Here')}</Text>
                     </View>
                 </View>
                 <View style={{alignItems: 'center'}}>
-                <Text style={{fontSize: 30, color: 'white'}}>To do List</Text>
+                <Text style={{fontSize: 30, color: 'white'}}>{t('Todo List')}</Text>
             </View>
             <View style={styles.list}>
                 <FlatList
@@ -103,14 +105,14 @@ const Welcome = ({navigation}) => {
             
             <AwesomeAlert
                 show={showAlert}  
-                title='Delete Todo' 
+                title={t('Delete Todo')} 
                 titleStyle={{fontSize: 28, color: 'red'}}
                 
-                message='Are you want to delete this todo ?'
+                message={t('Are you want to delete this todo ?')}
                 messageStyle={{color: 'black', fontSize: 22}}
                 
                 showCancelButton={true}
-                cancelText='Cancel'
+                cancelText={t('Cancel')}
                 cancelButtonColor='blue'
                 onCancelPressed={()=>{
                     setShowAlert(false),
@@ -118,7 +120,7 @@ const Welcome = ({navigation}) => {
                 }}
                 
                 showConfirmButton={true}
-                confirmText='Delete'
+                confirmText={t('Delete')}
                 confirmButtonColor="#DD6B55"
                 onConfirmPressed={() => {
                     handleConfirmDelete(deletingTodoId)

@@ -15,6 +15,7 @@ import CheckBox from '@react-native-community/checkbox';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 import { signupAction } from '../../store/userAction';
+import { t } from 'i18next';
 
 const screen = Dimensions.get('screen');
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -49,7 +50,7 @@ export default function Signup(){
                     <Image style={styles.header_image} source={require('../../assets/images/upnow.png')}/>
                     <View>
                         <Text style={{color: 'white', fontWeight: 'bold', fontSize: 25}}>UpNow</Text>
-                        <Text style={{color: '#3f7ad9'}}>Digital Hypnoterapy</Text>
+                        <Text style={{color: '#3f7ad9'}}>{t('Digital Hypnoterapy')}</Text>
                     </View>
                 </View>
                 <View style={styles.body}>
@@ -59,31 +60,31 @@ export default function Signup(){
                         <CustomInput
                             name= 'fName'
                             icon_name='account-circle'
-                            placeholder= 'First Name'
+                            placeholder= {t('First Name')}
                             control={control}
                             rules={{
-                                required: 'First name is required'
+                                required: t('First name is required')
                             }}
                             />
                         <CustomInput
                             name= 'lName'
                             icon_name='account-circle'
-                            placeholder= 'Last Name'
+                            placeholder= {t('Last Name')}
                             control={control}
                             rules={{
-                                required: 'Last name is required'
+                                required: t('Last name is required')
                             }}
                             />
                         <CustomInput 
                             name='email'
                             icon_name='email'
-                            placeholder= 'Email'
+                            placeholder= {t('Email')}
                             control={control}
                             rules={{
-                                required: 'Email is required', 
+                                required: t('Email is required'), 
                                 pattern: {
                                     value: emailRegex, 
-                                    message: 'Incorrect email address'
+                                    message: t('Incorrect email address')
                                 }
                             }}
                             />
@@ -91,18 +92,18 @@ export default function Signup(){
                         <CustomInput
                             name='password'
                             icon_name='lock'
-                            placeholder='Password'
+                            placeholder={t('Password')}
                             secureTextEntry
                             control={control}
                             rules={{
-                                required: 'Password is required', 
+                                required: t('Password is required'), 
                                 minLength: {
                                     value: 6, 
-                                    message: 'Password should be minimum 6 characters long'
+                                    message: t('Password should be minimum 6 characters long')
                                 },
                                 maxLength: {
                                     value: 24,
-                                    message: 'Password should be maximum 24 character long'
+                                    message: t('Password should be maximum 24 character long')
                                 }
                             }}
                             />
@@ -110,7 +111,7 @@ export default function Signup(){
                             <Controller
                                 control={control}
                                 name='checkbox'
-                                rules={{required: 'Please check the Term & Conditions and Privacy Policy'}}
+                                rules={{required: t('Please check the Term & Conditions and Privacy Policy')}}
                                 render={({
                                     field: { onChange, value}, fieldState: {error}
                                 }) =>(
@@ -126,13 +127,13 @@ export default function Signup(){
                                             />
                                         <View>
                                             <Text style={{color: 'white'}}>
-                                                by clicking on "Register" you agree to our 
+                                                {t('by clicking')} 
                                             <TouchableOpacity>
-                                                <Text style={{color: '#ff0000', marginBottom: -5}}> Term & Conditions </Text>
+                                                <Text style={{color: '#ff0000', marginBottom: -5}}> {t('Term & Conditions')} </Text>
                                             </TouchableOpacity>
-                                            and
+                                            {t('and')}
                                             <TouchableOpacity>
-                                                <Text style={{color: '#ff0000',  marginBottom: -5}}> Privacy Policy</Text>
+                                                <Text style={{color: '#ff0000',  marginBottom: -5}}> {t('Privacy policy')}</Text>
                                             </TouchableOpacity>
                                             </Text>
                                         </View>
@@ -159,15 +160,15 @@ export default function Signup(){
                                 colors={['#ff608b','#fe7591','#ff9199']}
                                 style={styles.button}
                                 >
-                                <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>Register</Text>
+                                <Text style={{color: 'white', fontWeight: 'bold', fontSize: 18}}>{t('Register')}</Text>
                             </LinearGradient>
                         </TouchableOpacity>
 
 
                         <View style={{alignItems: 'center', flexDirection: 'row', justifyContent: 'space-evenly', paddingHorizontal: 50}}>
-                            <Text style={{color: 'white'}}>Already have an account? </Text>
+                            <Text style={{color: 'white'}}>{t('Already have an account?')} </Text>
                             <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-                                <Text style={{color: '#ff4f9e', fontWeight: 'bold'}}>Log In</Text>
+                                <Text style={{color: '#ff4f9e', fontWeight: 'bold'}}>{t('Log In')}</Text>
                             </TouchableOpacity>
                         </View>
                     </View>

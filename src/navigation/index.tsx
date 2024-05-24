@@ -9,6 +9,7 @@ import AddTodo from '../screens/AddTodo/AddTodo';
 import UpdateTodo from '../screens/UpdateTodo/UpdateTodo';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import DrawerNavigator from './drawer';
+import { useTranslation } from 'react-i18next';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -20,6 +21,7 @@ function Home(){
 }
 
 export default function AppNavigation(){
+    const {t} = useTranslation();
     const user= useSelector((state) => state?.user);
     //console.log(user,'<<');
     return(
@@ -59,7 +61,7 @@ export default function AppNavigation(){
                                 backgroundColor: '#2b356d'
                             },
                             headerTintColor: 'white',
-                            title: "User info",
+                            title: t('User Info'),
                             headerTitleAlign: 'center',
                             headerBackTitle: 'Back'
                         }}
@@ -73,7 +75,7 @@ export default function AppNavigation(){
                                 backgroundColor: '#2b356d'
                             },
                             headerTintColor: 'white',
-                            title: "Add Todo",
+                            title: t('Add New Todo'),
                             headerTitleAlign: 'center',
                             headerBackTitle: 'Back'
                         }}
@@ -87,7 +89,7 @@ export default function AppNavigation(){
                                 backgroundColor: '#2b356d'
                             },
                             headerTintColor: 'white',
-                            title: "Update Todo",
+                            title: t('Update Todo'),
                             headerTitleAlign: 'center',
                             headerBackTitle: 'Back'
                         }}
