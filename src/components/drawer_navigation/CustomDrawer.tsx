@@ -24,18 +24,15 @@ const CustomDrawer = (props) =>{
 
     return (
         <View style={styles.container}>
-            <LinearGradient 
+            {/* <LinearGradient 
                 style={styles.background}
                 colors={['#2e2d3a','#303f51','#3b3a49']}
                 start={{x: 0, y: 0}}
                 end={{x: 1, y: 1}}
                 >
-            </LinearGradient>
+            </LinearGradient> */}
             <View style={styles.header}>
                 <Image style={styles.header_image} source={require('../../assets/images/upnow.png')}/>
-                <TouchableOpacity>
-                    <Entypo name="cross" size={24} color="white" />
-                </TouchableOpacity>
             </View>
             <View style={styles.body}>
                 <View>

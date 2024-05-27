@@ -224,9 +224,12 @@ const styles = StyleSheet.create({
   },
   placeholderStyle: {
     fontSize: 16,
+    color: 'black'
   },
   selectedTextStyle: {
     fontSize: 16,
+    fontWeight: 'bold',
+    color: 'black'
   },
   headerTitle:{
     position: 'absolute', 

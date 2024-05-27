@@ -33,6 +33,7 @@ const DrawerNavigator= ()=>{
         <Drawer.Navigator
             drawerContent={props => <CustomDrawer {...props} />}
             drawerType='slide'
+            overlayColor='transparent'
             screenOptions={{
                 headerShown: false,
                 drawerActiveBackgroundColor: '#243342',
@@ -47,11 +48,15 @@ const DrawerNavigator= ()=>{
                     paddingLeft: 10
                 },
                 drawerStyle: {
-                  backgroundColor: '#353847',
+                //   backgroundColor: '#353847',
+                  backgroundColor: 'transparent',
                   width: '65%',
+                  flex: 1,
+                //   elevation: 1,
+                //   zIndex: 1
                 },
                 sceneContainerStyle: {
-                  backgroundColor: '#293b4d',
+                  backgroundColor: '#15345c',
                 },
             }}
         >
